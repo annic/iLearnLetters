@@ -43,8 +43,6 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize tempDrawImage, mainImage;
 
-#define NUMBER_OF_EASY_WORDS 7
-#define NUMBER_OF_Hard_WORDS 7
 #define yCo 250
 
 -(NSMutableArray *)arrayOfWords{
@@ -99,21 +97,12 @@
     NSArray *lineArray = [content componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     
     
-    for (int i = 0; i < [lineArray count]; i++) {
-        NSArray *tempArray = [[lineArray objectAtIndex:i] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        
-        [self.arrayOfWords addObject:[tempArray objectAtIndex:0]];
-        
-         //NSLog(@"%@", [tempArray lastObject]);
+    for (int i = 0; i < [lineArray count]; i++)
+    {
+        [self.arrayOfWords addObject:[lineArray objectAtIndex:i]];
     }
 
-    
-    /*for (int i = 0; i < [self.arrayOfWords count]; i++) {
-       // NSLog(@"here");
-        NSLog(@"%@", [self.arrayOfWords objectAtIndex:i]);
-    }*/
-
-    NSLog(@"we have %d words", [self.arrayOfWords count]);
+    NSLog(@"Loaded %d EASY words", [self.arrayOfWords count]);
 }
 
 
@@ -129,20 +118,11 @@
     
     
     for (int i = 0; i < [lineArray count]; i++) {
-        NSArray *tempArray = [[lineArray objectAtIndex:i] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        [self.arrayOfWords addObject:[lineArray objectAtIndex:i]];
         
-        [self.arrayOfWords addObject:[tempArray objectAtIndex:0]];
-        
-        //NSLog(@"%@", [tempArray lastObject]);
     }
     
-    
-    /*for (int i = 0; i < [self.arrayOfWords count]; i++) {
-     // NSLog(@"here");
-     NSLog(@"%@", [self.arrayOfWords objectAtIndex:i]);
-     }*/
-    
-    NSLog(@"we have %d words", [self.arrayOfWords count]);
+    NSLog(@"Loaded %d HARD words", [self.arrayOfWords count]);
 }
 
 
@@ -167,25 +147,10 @@
     NSLog(@"we have %d words", [wordArray count]);
 }
 
-
-
 -(NSString *)randomlyPickWord{
     
-    int r = 0;
     
-    if ([levelSelected isEqualToString:@"easy"]) {
-        
-      r = arc4random() % NUMBER_OF_EASY_WORDS;
-    
-    }else if ([levelSelected isEqualToString:@"hard"]) {
-        
-         r = arc4random() % NUMBER_OF_Hard_WORDS;
-        
-    }else{
-        r = arc4random() % [self.arrayOfWords count];
-    }
-
-   
+    int r = arc4random() % [self.arrayOfWords count];
     
     for (int i = 0; i < [[self.arrayOfWords objectAtIndex:r] length]; i++) {
         [self createButtonFront:i :[NSString stringWithFormat:@"%@", [[self.arrayOfWords objectAtIndex:r] substringWithRange:NSMakeRange(i, 1)]]];
@@ -199,8 +164,6 @@
     
     
     self.randomWord.text = [NSString stringWithFormat:@"%@", [self randomlyPickWord]];
-    
-    
     
     [self.google_TTS_BySham speak:[NSString stringWithFormat:@"%@", self.randomWord.text]];
     

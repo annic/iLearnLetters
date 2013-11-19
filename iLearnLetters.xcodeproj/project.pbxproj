@@ -250,9 +250,9 @@
 				D501381C17F0D6DE00CC4C98 /* MainPage */,
 				D5632DFF181B030900C49012 /* ParentsTeacherPage */,
 				D5632E05181B46DA00C49012 /* CoreData */,
-				D501382917F109DF00CC4C98 /* learnPage */,
+				D501382917F109DF00CC4C98 /* LearnPage */,
 				D5632DF9181AFE9300C49012 /* SelectView */,
-				D5B006FC18301EE100E13E56 /* selectLevel */,
+				D5B006FC18301EE100E13E56 /* SelectLevel */,
 				D50137F417F0D04400CC4C98 /* AppDelegate.h */,
 				D50137F517F0D04400CC4C98 /* AppDelegate.m */,
 				D50137FD17F0D04400CC4C98 /* iLearnLetters.xcdatamodeld */,
@@ -301,7 +301,7 @@
 			name = MainPage;
 			sourceTree = "<group>";
 		};
-		D501382917F109DF00CC4C98 /* learnPage */ = {
+		D501382917F109DF00CC4C98 /* LearnPage */ = {
 			isa = PBXGroup;
 			children = (
 				D5B0070B18315EA200E13E56 /* SettingsViewController.m */,
@@ -309,7 +309,7 @@
 				D501382A17F10A0500CC4C98 /* WordsViewController.h */,
 				D501382B17F10A0500CC4C98 /* WordsViewController.m */,
 			);
-			name = learnPage;
+			name = LearnPage;
 			sourceTree = "<group>";
 		};
 		D51221B2181C9FAD00B23366 /* images */ = {
@@ -381,13 +381,13 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
-		D5B006FC18301EE100E13E56 /* selectLevel */ = {
+		D5B006FC18301EE100E13E56 /* SelectLevel */ = {
 			isa = PBXGroup;
 			children = (
 				D5B006FD18301F0100E13E56 /* levelSelectViewController.h */,
 				D5B006FE18301F0100E13E56 /* levelSelectViewController.m */,
 			);
-			name = selectLevel;
+			name = SelectLevel;
 			sourceTree = "<group>";
 		};
 		D5B007001831569900E13E56 /* StatPage */ = {

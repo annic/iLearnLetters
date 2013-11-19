@@ -39,18 +39,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)easyPressed:(id)sender {
-    [self performSegueWithIdentifier:@"learnPage" sender:self];
-    
+- (IBAction)easyPressed:(id)sender
+{
     levelSelected = @"easy";
-}
-- (IBAction)hardPressed:(id)sender {
     [self performSegueWithIdentifier:@"learnPage" sender:self];
+}
+- (IBAction)hardPressed:(id)sender
+{
     levelSelected = @"hard";
-}
-- (IBAction)customPressed:(id)sender {
     [self performSegueWithIdentifier:@"learnPage" sender:self];
+}
+- (IBAction)customPressed:(id)sender
+{
     levelSelected = @"custom";
+    [self performSegueWithIdentifier:@"learnPage" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

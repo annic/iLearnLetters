@@ -15,7 +15,7 @@
 //  2013-10-19      R. Roshanravan              Major UI improvements
 //  2013-10-27      Anni Cao                    Added file headers and comments
 //
-//  Known bugs: None
+//  Known bugs: N/A
 //
 //  Copyright (c) 2013 Rouzbeh Roshanravan. All rights reserved.
 //

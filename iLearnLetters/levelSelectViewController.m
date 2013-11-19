@@ -53,14 +53,9 @@
     levelSelected = @"custom";
 }
 
-
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-
-        WordsViewController *destViewController = segue.destinationViewController;
-        destViewController.levelSelected = self.levelSelected;
-        
-    
+    WordsViewController *destViewController = segue.destinationViewController;
+    destViewController.levelSelected = self.levelSelected;
 }
 @end

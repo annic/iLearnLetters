@@ -15,11 +15,10 @@
 //  2013-10-19      R. Roshanravan              Major UI improvements
 //  2013-10-27      Anni Cao                    Added file headers and comments
 //
-//  Known bugs: N/A
+//  Known bugs: None
 //
 //  Copyright (c) 2013 Rouzbeh Roshanravan. All rights reserved.
 //
-
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>

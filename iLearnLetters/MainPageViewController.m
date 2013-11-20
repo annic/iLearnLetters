@@ -24,10 +24,11 @@
 #import "MainPageViewController.h"
 #import <Parse/Parse.h>
 #import "UIView+Animation.h"
-#import "LearnLevelSelect.h"
+// #import "LearnLevelSelect.h"
+#import "levelSelectViewController.h"
 
 @interface MainPageViewController () <UIAlertViewDelegate>
-
+@property NSString* mode;
 @end
 
 @implementation MainPageViewController
@@ -125,19 +126,31 @@
     }
 }
 
-- (IBAction)learnPressed:(id)sender {
+- (IBAction)learnPressed:(id)sender
+{
     
     //Create a new levelSelect UIView
-    LearnLevelSelect *levelSelect = [LearnLevelSelect levelSelect];
-    
-    //Set its location to the center of the page
-    levelSelect.center = self.view.center;
-    
-    //Add that view to main view 
-    [self.view addSubviewWithZoomInAnimation:levelSelect duration:1.0];
-    
-    [UIView animateWithDuration:1 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{} completion:nil];
+//    LearnLevelSelect *levelSelect = [LearnLevelSelect levelSelect];
+//    
+//    //Set its location to the center of the page
+//    levelSelect.center = self.view.center;
+//    
+//    //Add that view to main view 
+//    [self.view addSubviewWithZoomInAnimation:levelSelect duration:1.0];
+//    
+//    [UIView animateWithDuration:1 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{} completion:nil];
+    self.mode = @"learn";
+}
 
+- (IBAction)gamePressed:(id)sender
+{
+    self.mode = @"game";
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    levelSelectViewController* destViewController = segue.destinationViewController;
+    destViewController.mode = self.mode;
 }
 
 @end

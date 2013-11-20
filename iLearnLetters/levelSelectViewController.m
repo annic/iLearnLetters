@@ -8,6 +8,7 @@
 
 #import "levelSelectViewController.h"
 #import "WordsViewController.h"
+#import "GameViewController.h"
 
 @interface levelSelectViewController ()
 
@@ -39,25 +40,47 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)performSegue
+{
+    if ([self.mode isEqualToString:@"learn"])
+    {
+        [self performSegueWithIdentifier:@"learnPage" sender:self];
+    }
+    else if ([self.mode isEqualToString:@"game"])
+    {
+        [self performSegueWithIdentifier:@"gamePage" sender:self];
+    }
+}
+
 - (IBAction)easyPressed:(id)sender
 {
     levelSelected = @"easy";
-    [self performSegueWithIdentifier:@"learnPage" sender:self];
+    [self performSegue];
 }
 - (IBAction)hardPressed:(id)sender
 {
     levelSelected = @"hard";
-    [self performSegueWithIdentifier:@"learnPage" sender:self];
+    [self performSegue];
 }
 - (IBAction)customPressed:(id)sender
 {
     levelSelected = @"custom";
-    [self performSegueWithIdentifier:@"learnPage" sender:self];
+    [self performSegue];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    WordsViewController *destViewController = segue.destinationViewController;
-    destViewController.levelSelected = self.levelSelected;
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([self.mode isEqualToString:@"learn"])
+    {
+        WordsViewController *destViewController = segue.destinationViewController;
+        destViewController.levelSelected = self.levelSelected;
+    }
+    else if ([self.mode isEqualToString:@"game"])
+    {
+        GameViewController *destViewController = segue.destinationViewController;
+        destViewController.levelSelected = self.levelSelected;
+    }
+
 }
 @end

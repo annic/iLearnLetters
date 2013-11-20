@@ -61,15 +61,11 @@
     brush = 10.0;
     opacity = 1.0;
     
-
-    
     [super viewDidLoad];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
-    _managedObjectContext = [appDelegate managedObjectContext];
-    
-
+    _managedObjectContext = [appDelegate managedObjectContext];    
     
     if ([levelSelected isEqualToString:@"easy"]) {
         [self extractEasyWordsFromFile];
@@ -79,8 +75,6 @@
         [self extractCustomWordsFromFile];
     }
     
-   
-
     self.google_TTS_BySham = [[Google_TTS_BySham alloc] init];
     
 	
@@ -216,7 +210,6 @@
     
 }
 
-
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
        if(buttonIndex == 0) {
@@ -237,7 +230,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Image could not be saved.Please try again"  delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Close", nil];
         [alert show];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Image was successfully saved in photoalbum"  delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Close", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Image was successfully saved in photo album"  delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Close", nil];
         [alert show];
     }
 }

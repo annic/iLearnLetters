@@ -10,4 +10,6 @@
 
 @interface levelSelectViewController : UIViewController
 
+@property NSString* mode;
+
 @end

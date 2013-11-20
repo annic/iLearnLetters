@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DBE0B85183C8CD400841FB8 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE0B84183C8CD400841FB8 /* GameViewController.m */; };
 		D50137E417F0D04400CC4C98 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E317F0D04400CC4C98 /* UIKit.framework */; };
 		D50137E617F0D04400CC4C98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E517F0D04400CC4C98 /* Foundation.framework */; };
 		D50137E817F0D04400CC4C98 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E717F0D04400CC4C98 /* CoreGraphics.framework */; };
@@ -79,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3DBE0B83183C8CD400841FB8 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		3DBE0B84183C8CD400841FB8 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		D50137E017F0D04400CC4C98 /* iLearnLetters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLearnLetters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D50137E317F0D04400CC4C98 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D50137E517F0D04400CC4C98 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -197,6 +200,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3DBE0B82183C8C1900841FB8 /* GamePage */ = {
+			isa = PBXGroup;
+			children = (
+				3DBE0B83183C8CD400841FB8 /* GameViewController.h */,
+				3DBE0B84183C8CD400841FB8 /* GameViewController.m */,
+			);
+			name = GamePage;
+			sourceTree = "<group>";
+		};
 		D50137D717F0D04400CC4C98 = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +263,7 @@
 				D5632DFF181B030900C49012 /* ParentsTeacherPage */,
 				D5632E05181B46DA00C49012 /* CoreData */,
 				D501382917F109DF00CC4C98 /* LearnPage */,
+				3DBE0B82183C8C1900841FB8 /* GamePage */,
 				D5632DF9181AFE9300C49012 /* SelectView */,
 				D5B006FC18301EE100E13E56 /* SelectLevel */,
 				D50137F417F0D04400CC4C98 /* AppDelegate.h */,
@@ -536,6 +549,7 @@
 				D50137F617F0D04400CC4C98 /* AppDelegate.m in Sources */,
 				D50137FF17F0D04400CC4C98 /* iLearnLetters.xcdatamodeld in Sources */,
 				D501381F17F0D71000CC4C98 /* LoginViewController.m in Sources */,
+				3DBE0B85183C8CD400841FB8 /* GameViewController.m in Sources */,
 				D501382217F0D72400CC4C98 /* SignUpViewController.m in Sources */,
 				D501382517F0D73800CC4C98 /* MainPageViewController.m in Sources */,
 				D501382817F0E75300CC4C98 /* Reachability.m in Sources */,

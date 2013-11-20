@@ -14,6 +14,9 @@
 //  2013-10-12      R. Roshanravan              Original definition
 //  2013-10-19      R. Roshanravan              Major UI improvements
 //  2013-10-27      Anni Cao                    Added file headers and comments
+//  2013-11-16      David Shiach                Added words being removed when new words
+//                                              generated.
+//  2013-11-19      David Shiach                Added Phonics popup.
 //
 //  Known bugs: N/A
 //
@@ -32,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *randomWord;
 @property ( nonatomic) int countOfCustomWords;
 @property (nonatomic, strong) NSMutableArray *arrayOfWords;
+@property  NSMutableArray *wordButtons;
+@property NSMutableArray *phonicsView;
 @property (nonatomic,strong)Google_TTS_BySham *google_TTS_BySham;
 @end
 
@@ -43,6 +48,8 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize tempDrawImage, mainImage;
 
+#define NUMBER_OF_EASY_WORDS 7
+#define NUMBER_OF_Hard_WORDS 7
 #define yCo 250
 
 -(NSMutableArray *)arrayOfWords{
@@ -61,7 +68,7 @@
     brush = 10.0;
     opacity = 1.0;
     
-
+    
     
     [super viewDidLoad];
     
@@ -69,7 +76,8 @@
     
     _managedObjectContext = [appDelegate managedObjectContext];
     
-
+    _wordButtons = [NSMutableArray array];
+    _phonicsView = [NSMutableArray array];
     
     if ([levelSelected isEqualToString:@"easy"]) {
         [self extractEasyWordsFromFile];
@@ -79,8 +87,8 @@
         [self extractCustomWordsFromFile];
     }
     
-   
-
+    
+    
     self.google_TTS_BySham = [[Google_TTS_BySham alloc] init];
     
 	
@@ -97,12 +105,21 @@
     NSArray *lineArray = [content componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     
     
-    for (int i = 0; i < [lineArray count]; i++)
-    {
-        [self.arrayOfWords addObject:[lineArray objectAtIndex:i]];
+    for (int i = 0; i < [lineArray count]; i++) {
+        NSArray *tempArray = [[lineArray objectAtIndex:i] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        [self.arrayOfWords addObject:[tempArray objectAtIndex:0]];
+        
+        //NSLog(@"%@", [tempArray lastObject]);
     }
-
-    NSLog(@"Loaded %d EASY words", [self.arrayOfWords count]);
+    
+    
+    /*for (int i = 0; i < [self.arrayOfWords count]; i++) {
+     // NSLog(@"here");
+     NSLog(@"%@", [self.arrayOfWords objectAtIndex:i]);
+     }*/
+    
+    NSLog(@"we have %d words", [self.arrayOfWords count]);
 }
 
 
@@ -118,11 +135,20 @@
     
     
     for (int i = 0; i < [lineArray count]; i++) {
-        [self.arrayOfWords addObject:[lineArray objectAtIndex:i]];
+        NSArray *tempArray = [[lineArray objectAtIndex:i] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         
+        [self.arrayOfWords addObject:[tempArray objectAtIndex:0]];
+        
+        //NSLog(@"%@", [tempArray lastObject]);
     }
     
-    NSLog(@"Loaded %d HARD words", [self.arrayOfWords count]);
+    
+    /*for (int i = 0; i < [self.arrayOfWords count]; i++) {
+     // NSLog(@"here");
+     NSLog(@"%@", [self.arrayOfWords objectAtIndex:i]);
+     }*/
+    
+    NSLog(@"we have %d words", [self.arrayOfWords count]);
 }
 
 
@@ -135,26 +161,44 @@
     NSEntityDescription *list = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:self.managedObjectContext];
     
     [requestToGetList setEntity:list];
-           
+    
     NSMutableArray *mutableFetchResultsList = [[self.managedObjectContext executeFetchRequest:requestToGetList error:&error] mutableCopy];
     
     //Seperate each word at white space and add it to an array
     NSArray *wordArray = [[[mutableFetchResultsList lastObject] wordString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     
     self.arrayOfWords = [wordArray mutableCopy];
-        
-   
+    
+    
     NSLog(@"we have %d words", [wordArray count]);
 }
 
+
+
 -(NSString *)randomlyPickWord{
     
+    int r = 0;
     
-    int r = arc4random() % [self.arrayOfWords count];
+    if ([levelSelected isEqualToString:@"easy"]) {
+        
+        r = arc4random() % NUMBER_OF_EASY_WORDS;
+        
+    }else if ([levelSelected isEqualToString:@"hard"]) {
+        
+        r = arc4random() % NUMBER_OF_Hard_WORDS;
+        
+    }else{
+        r = arc4random() % [self.arrayOfWords count];
+    }
+    
+    for (UIButton *button in _wordButtons) {
+        [button removeFromSuperview];
+    }
+    [_wordButtons removeAllObjects];
     
     for (int i = 0; i < [[self.arrayOfWords objectAtIndex:r] length]; i++) {
         [self createButtonFront:i :[NSString stringWithFormat:@"%@", [[self.arrayOfWords objectAtIndex:r] substringWithRange:NSMakeRange(i, 1)]]];
-    
+        
     }
     
     return [self.arrayOfWords objectAtIndex:r];
@@ -164,6 +208,8 @@
     
     
     self.randomWord.text = [NSString stringWithFormat:@"%@", [self randomlyPickWord]];
+    
+    
     
     [self.google_TTS_BySham speak:[NSString stringWithFormat:@"%@", self.randomWord.text]];
     
@@ -181,20 +227,59 @@
     
     buttonToAdd.frame = CGRectMake(pointToAddButton.x, pointToAddButton.y, 44.0f, 44.0f);
     
-    [buttonToAdd addTarget:self action:@selector(readTheChar:)
+    //[buttonToAdd addTarget:self action:@selector(readTheChar:)
+    //      forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
+    
+    [buttonToAdd addTarget:self action:@selector(displayPhonics:)
           forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
     
     [buttonToAdd setTitle:letter forState:(UIControlState)UIControlStateNormal];
     
+    [_wordButtons addObject: buttonToAdd];
+    
     [self.view addSubview:buttonToAdd];
     
+    
+}
 
+-(IBAction)displayPhonics:(id)sender{
+
+    // Create UIViews for phonics screen
+    CGRect viewRect = CGRectMake(10, 10, 1000, 675);
+    UIView* phonics = [[UIView alloc] initWithFrame:viewRect];
+    [phonics setBackgroundColor:[UIColor whiteColor]];
+    [_phonicsView addObject: phonics];
+    [self.view addSubview:phonics];
+    
+    CGPoint pointToAddButton = CGPointMake(950, 625);
+    UIButton *exitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [exitButton setBackgroundColor:[UIColor cyanColor]];
+    [exitButton setTitleColor:[UIColor redColor] forState:(UIControlState)UIControlStateNormal];
+    exitButton.frame = CGRectMake(pointToAddButton.x, pointToAddButton.y, 44.0f, 44.0f);    
+    [exitButton addTarget:self action:@selector(exitPhonics:)
+          forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
+    [exitButton setTitle:@"Back" forState:(UIControlState)UIControlStateNormal];
+    [_phonicsView addObject: exitButton];
+    [self.view addSubview:exitButton];
+    
+}
+
+-(IBAction)exitPhonics:(id)sender{
+
+    for (UIButton *button in _phonicsView) {
+        [button removeFromSuperview];
+    }
+    for (UIView *view in _phonicsView) {
+        [view removeFromSuperview];
+    }
+    [_phonicsView removeAllObjects];
+    
 }
 
 -(IBAction)readTheChar:(id)sender{
-   
+    
     [self.google_TTS_BySham speak:[NSString stringWithFormat:@"%@", [sender titleLabel].text]];
-
+    
 }
 
 - (void)viewDidUnload
@@ -219,7 +304,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-       if(buttonIndex == 0) {
+    if(buttonIndex == 0) {
         
         UIGraphicsBeginImageContextWithOptions(self.mainImage.bounds.size, NO, 0.0);
         [self.mainImage.image drawInRect:CGRectMake(0, 0, self.mainImage.frame.size.width, self.mainImage.frame.size.height)];

@@ -14,6 +14,7 @@
 //  2013-10-12      R. Roshanravan              Original definition
 //  2013-10-19      R. Roshanravan              Major UI improvements
 //  2013-10-27      Anni Cao                    Added file headers and comments
+//  2013-11-19      David Shiach                Updated password entry for secure
 //
 //  Known bugs: N/A
 //
@@ -44,6 +45,9 @@
     
     // Hide the navigation bar on login page
     [self navigationController].navigationBarHidden = YES;
+    
+    // Password entry secure
+    [self passwordTextBox].secureTextEntry = YES;
     
 	// Check and see if the user is already online
     // If so directly send user to the main page

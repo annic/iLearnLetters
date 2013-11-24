@@ -45,6 +45,6 @@
 
 
 - (IBAction)reset:(id)sender;
-- (IBAction)pencilPressed:(id)sender;
+// - (IBAction)pencilPressed:(id)sender;
 
 @end

@@ -88,6 +88,11 @@
     self.google_TTS_BySham = [[Google_TTS_BySham alloc] init];
 }
 
+-(void)closeSettings:(id)sender
+{
+    
+}
+
 -(void)extractEasyWordsFromFile{
     
     NSString* path = [[NSBundle mainBundle] pathForResource:@"easy" ofType:@"txt"];
@@ -132,7 +137,6 @@
     
     NSError *error = nil;
     
-    
     NSFetchRequest *requestToGetList = [[NSFetchRequest alloc] init];
     NSEntityDescription *list = [NSEntityDescription entityForName:@"Word" inManagedObjectContext:self.managedObjectContext];
     
@@ -148,7 +152,6 @@
     
     NSLog(@"Loaded %d CUSTOM words", [wordArray count]);
 }
-
 
 
 -(NSString *)randomlyPickWord{
@@ -172,8 +175,6 @@
     
     
     self.randomWord.text = [NSString stringWithFormat:@"%@", [self randomlyPickWord]];
-    
-    
     
     [self.google_TTS_BySham speak:[NSString stringWithFormat:@"%@", self.randomWord.text]];
     

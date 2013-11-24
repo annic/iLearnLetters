@@ -21,7 +21,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ScrollViewController;
+@interface SignUpViewController : UIViewController<UITextFieldDelegate>{
+    ScrollViewController *scrollView;
+    UITextField *userNameText;
+    UITextField *passWordText;
+    UITextField *emailText;
+}
 
-@interface SignUpViewController : UIViewController
+@property (nonatomic, retain) IBOutlet ScrollViewController *scrollView;
+@property (nonatomic, retain) IBOutlet UITextField *userNameText;
+@property (nonatomic, retain) IBOutlet UITextField *passWordText;
+@property (nonatomic, retain) IBOutlet UITextField *emailText;
 
 @end

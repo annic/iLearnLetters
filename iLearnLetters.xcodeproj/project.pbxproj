@@ -67,6 +67,7 @@
 		D5B0070E18315EA200E13E56 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B0070B18315EA200E13E56 /* SettingsViewController.m */; };
 		D5F2009D181DB609004B013D /* statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F2009C181DB609004B013D /* statistics.png */; };
 		D5F2009F181DB747004B013D /* editWordListButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F2009E181DB747004B013D /* editWordListButton.png */; };
+		E3A74DD91841BB8500A69076 /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A74DD81841BB8500A69076 /* ScrollViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,8 @@
 		D5B0070C18315EA200E13E56 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		D5F2009C181DB609004B013D /* statistics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statistics.png; sourceTree = "<group>"; };
 		D5F2009E181DB747004B013D /* editWordListButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editWordListButton.png; sourceTree = "<group>"; };
+		E3A74DD71841BB8500A69076 /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
+		E3A74DD81841BB8500A69076 /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +304,8 @@
 				D501381E17F0D71000CC4C98 /* LoginViewController.m */,
 				D501382017F0D72400CC4C98 /* SignUpViewController.h */,
 				D501382117F0D72400CC4C98 /* SignUpViewController.m */,
+				E3A74DD71841BB8500A69076 /* ScrollViewController.h */,
+				E3A74DD81841BB8500A69076 /* ScrollViewController.m */,
 			);
 			name = Login/Signup;
 			sourceTree = "<group>";
@@ -563,6 +568,7 @@
 				D5B00703183156B200E13E56 /* StatPageViewController.m in Sources */,
 				D5B00706183157A100E13E56 /* pieChartView.m in Sources */,
 				D5B0070D18315EA200E13E56 /* SettingsViewController.m in Sources */,
+				E3A74DD91841BB8500A69076 /* ScrollViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

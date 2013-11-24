@@ -25,7 +25,7 @@
 #import "LoginViewController.h"
 #import "Reachability.h"
 #import <Parse/Parse.h>
-
+#import "ScrollViewController.h"
 
 @interface LoginViewController ()
 
@@ -36,7 +36,9 @@
 @end
 
 @implementation LoginViewController
-
+@synthesize scrollView;
+@synthesize userNameText;
+@synthesize passWordText;
 @synthesize internetReachable;
 
 - (void)viewDidLoad
@@ -135,5 +137,58 @@
     }
     
     [internetReachable startNotifier];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc. that aren't in use.
+}
+
+
+- (void)viewDidUnload
+{
+    [self setScrollView:nil];
+    [self setUserNameText:nil];
+    [self setPassWordText:nil];
+    [super viewDidUnload];
+    
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+/*
+- (void)dealloc
+{
+    [scrollView release];
+    [userNameText release];
+    [passWordText release];
+    [super dealloc];
+}*/
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == userNameText) {
+        [userNameText becomeFirstResponder];
+    }
+    
+    else if (textField == passWordText) {
+        [passWordText becomeFirstResponder];
+    }
+    
+    
+    return YES;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [scrollView adjustOffsetToIdealIfNeeded];
 }
 @end

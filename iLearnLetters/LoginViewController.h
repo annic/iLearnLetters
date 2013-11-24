@@ -21,7 +21,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ScrollViewController;
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController<UITextFieldDelegate>{
+    ScrollViewController *scrollView;
+    UITextField *userNameText;
+    UITextField *passWordText;
+}
+
+@property (nonatomic, retain) IBOutlet ScrollViewController *scrollView;
+@property (nonatomic, retain) IBOutlet UITextField *userNameText;
+@property (nonatomic, retain) IBOutlet UITextField *passWordText;
 
 @end

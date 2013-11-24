@@ -64,7 +64,7 @@
 - (IBAction)parentsTeacherPressed:(id)sender {
     
     //Check for password parents
-    
+    self.mode = @"parentTeacher";
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Login"
                                                         message:nil
                                                        delegate:self
@@ -149,8 +149,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    levelSelectViewController* destViewController = segue.destinationViewController;
-    destViewController.mode = self.mode;
+    if (![self.mode isEqualToString:@"parentTeacher"])
+    {
+        levelSelectViewController* destViewController = segue.destinationViewController;
+        destViewController.mode = self.mode;
+    }
 }
 
 @end

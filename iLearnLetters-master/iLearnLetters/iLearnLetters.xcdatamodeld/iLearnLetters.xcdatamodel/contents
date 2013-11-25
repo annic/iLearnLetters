@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="List" representedClassName="List" syncable="YES">
+        <attribute name="listName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="list" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="Word" representedClassName="Word" syncable="YES">
+        <attribute name="wordString" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="List" inverseName="words" inverseEntity="List" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="List" positionX="135" positionY="192" width="128" height="73"/>
+        <element name="Word" positionX="333" positionY="288" width="128" height="73"/>
+    </elements>
+</model>

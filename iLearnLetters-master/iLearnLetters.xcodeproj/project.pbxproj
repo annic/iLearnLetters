@@ -1,0 +1,823 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DBE0B85183C8CD400841FB8 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE0B84183C8CD400841FB8 /* GameViewController.m */; };
+		3DBE0B88183F2EDB00841FB8 /* WordsLoaderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE0B87183F2EDB00841FB8 /* WordsLoaderHelper.m */; };
+		73F7D50418434DCC006171C2 /* Sound.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F7D50318434DCC006171C2 /* Sound.png */; };
+		73F7D50618434DDA006171C2 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F7D50518434DDA006171C2 /* refresh.png */; };
+		73F7D50818435492006171C2 /* notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F7D50718435492006171C2 /* notes.png */; };
+		D50137E417F0D04400CC4C98 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E317F0D04400CC4C98 /* UIKit.framework */; };
+		D50137E617F0D04400CC4C98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E517F0D04400CC4C98 /* Foundation.framework */; };
+		D50137E817F0D04400CC4C98 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E717F0D04400CC4C98 /* CoreGraphics.framework */; };
+		D50137EA17F0D04400CC4C98 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E917F0D04400CC4C98 /* CoreData.framework */; };
+		D50137F017F0D04400CC4C98 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D50137EE17F0D04400CC4C98 /* InfoPlist.strings */; };
+		D50137F217F0D04400CC4C98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D50137F117F0D04400CC4C98 /* main.m */; };
+		D50137F617F0D04400CC4C98 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D50137F517F0D04400CC4C98 /* AppDelegate.m */; };
+		D50137F817F0D04400CC4C98 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D50137F717F0D04400CC4C98 /* Default.png */; };
+		D50137FA17F0D04400CC4C98 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50137F917F0D04400CC4C98 /* Default@2x.png */; };
+		D50137FC17F0D04400CC4C98 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D50137FB17F0D04400CC4C98 /* Default-568h@2x.png */; };
+		D50137FF17F0D04400CC4C98 /* iLearnLetters.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D50137FD17F0D04400CC4C98 /* iLearnLetters.xcdatamodeld */; };
+		D501380617F0D06700CC4C98 /* iPadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D501380517F0D06700CC4C98 /* iPadStoryboard.storyboard */; };
+		D501380817F0D56400CC4C98 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D501380717F0D56400CC4C98 /* Parse.framework */; };
+		D501380A17F0D59700CC4C98 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D501380917F0D59700CC4C98 /* AudioToolbox.framework */; };
+		D501380C17F0D5A100CC4C98 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D501380B17F0D5A100CC4C98 /* CFNetwork.framework */; };
+		D501380E17F0D5B200CC4C98 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D501380D17F0D5B200CC4C98 /* CoreLocation.framework */; };
+		D501381017F0D5D600CC4C98 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D501380F17F0D5D600CC4C98 /* libz.1.1.3.dylib */; };
+		D501381217F0D5E400CC4C98 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D501381117F0D5E400CC4C98 /* MobileCoreServices.framework */; };
+		D501381417F0D5EC00CC4C98 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D501381317F0D5EC00CC4C98 /* QuartzCore.framework */; };
+		D501381617F0D5F400CC4C98 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D501381517F0D5F400CC4C98 /* Security.framework */; };
+		D501381817F0D5FC00CC4C98 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D501381717F0D5FC00CC4C98 /* StoreKit.framework */; };
+		D501381A17F0D60300CC4C98 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D501381917F0D60300CC4C98 /* SystemConfiguration.framework */; };
+		D501381F17F0D71000CC4C98 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D501381E17F0D71000CC4C98 /* LoginViewController.m */; };
+		D501382217F0D72400CC4C98 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D501382117F0D72400CC4C98 /* SignUpViewController.m */; };
+		D501382517F0D73800CC4C98 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D501382417F0D73800CC4C98 /* MainPageViewController.m */; };
+		D501382817F0E75300CC4C98 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D501382717F0E75300CC4C98 /* Reachability.m */; };
+		D501382C17F10A0500CC4C98 /* WordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D501382B17F10A0500CC4C98 /* WordsViewController.m */; };
+		D501382E17F10CB400CC4C98 /* easy.txt in Resources */ = {isa = PBXBuildFile; fileRef = D501382D17F10CB400CC4C98 /* easy.txt */; };
+		D501383117F1155200CC4C98 /* libGoogle_TTS_ByShamsu_Universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D501383017F1155200CC4C98 /* libGoogle_TTS_ByShamsu_Universal.a */; };
+		D501383317F1157D00CC4C98 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D501383217F1157D00CC4C98 /* AVFoundation.framework */; };
+		D50299B2181C562F00969A08 /* logsignpage.png in Resources */ = {isa = PBXBuildFile; fileRef = D50299B1181C562F00969A08 /* logsignpage.png */; };
+		D50299B7181C5D3100969A08 /* gameButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D50299B3181C5D3100969A08 /* gameButtonPressed.png */; };
+		D50299B8181C5D3100969A08 /* gameButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D50299B4181C5D3100969A08 /* gameButton.png */; };
+		D50299B9181C5D3100969A08 /* learnButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D50299B5181C5D3100969A08 /* learnButtonPressed.png */; };
+		D50299BA181C5D3100969A08 /* learnButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D50299B6181C5D3100969A08 /* learnButton.png */; };
+		D51221BA181CA00B00B23366 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51221B9181CA00B00B23366 /* SenTestingKit.framework */; };
+		D51221BB181CA00B00B23366 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E317F0D04400CC4C98 /* UIKit.framework */; };
+		D51221BC181CA00B00B23366 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E517F0D04400CC4C98 /* Foundation.framework */; };
+		D51221C2181CA00B00B23366 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D51221C0181CA00B00B23366 /* InfoPlist.strings */; };
+		D51221C5181CA00B00B23366 /* iLearnLettersUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D51221C4181CA00B00B23366 /* iLearnLettersUnitTests.m */; };
+		D51221D0181CA8EC00B23366 /* updateButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D51221CD181CA8EC00B23366 /* updateButton.png */; };
+		D51221D1181CA8EC00B23366 /* addWordsPage.png in Resources */ = {isa = PBXBuildFile; fileRef = D51221CE181CA8EC00B23366 /* addWordsPage.png */; };
+		D51221D3181CAB0700B23366 /* testButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D51221D2181CAB0700B23366 /* testButton.png */; };
+		D5632DF8181AFE1B00C49012 /* UIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5632DF7181AFE1B00C49012 /* UIView+Animation.m */; };
+		D5632DFC181AFECE00C49012 /* LearnLevelSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = D5632DFB181AFECE00C49012 /* LearnLevelSelect.m */; };
+		D5632DFE181AFF2B00C49012 /* LevelLearnSelect.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5632DFD181AFF2B00C49012 /* LevelLearnSelect.xib */; };
+		D5632E02181B033300C49012 /* ParentsTeacherPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5632E01181B033300C49012 /* ParentsTeacherPageViewController.m */; };
+		D5632E04181B085300C49012 /* hard.txt in Resources */ = {isa = PBXBuildFile; fileRef = D5632E03181B085300C49012 /* hard.txt */; };
+		D5632E0E181B475500C49012 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = D5632E0D181B475500C49012 /* Word.m */; };
+		D5632E11181B475600C49012 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = D5632E10181B475600C49012 /* List.m */; };
+		D5B006FF18301F0100E13E56 /* levelSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B006FE18301F0100E13E56 /* levelSelectViewController.m */; };
+		D5B00703183156B200E13E56 /* StatPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B00702183156B200E13E56 /* StatPageViewController.m */; };
+		D5B00706183157A100E13E56 /* pieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B00705183157A100E13E56 /* pieChartView.m */; };
+		D5B00707183157A100E13E56 /* pieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B00705183157A100E13E56 /* pieChartView.m */; };
+		D5B0070A18315A9100E13E56 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B0070918315A9100E13E56 /* MessageUI.framework */; };
+		D5B0070D18315EA200E13E56 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B0070B18315EA200E13E56 /* SettingsViewController.m */; };
+		D5B0070E18315EA200E13E56 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B0070B18315EA200E13E56 /* SettingsViewController.m */; };
+		D5F2009D181DB609004B013D /* statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F2009C181DB609004B013D /* statistics.png */; };
+		D5F2009F181DB747004B013D /* editWordListButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F2009E181DB747004B013D /* editWordListButton.png */; };
+		E35791381842DF4F00CFF680 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = E35791371842DF4F00CFF680 /* next.png */; };
+		E35EB0921842D4D600BCA468 /* startButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E35EB0911842D4D600BCA468 /* startButton.png */; };
+		E3625ADC1842D85B00A9ED6A /* paint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3625ADB1842D85B00A9ED6A /* paint.jpg */; };
+		E3A74DD91841BB8500A69076 /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A74DD81841BB8500A69076 /* ScrollViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D51221CA181CA02F00B23366 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D50137D817F0D04400CC4C98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D50137DF17F0D04400CC4C98;
+			remoteInfo = iLearnLetters;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3DBE0B83183C8CD400841FB8 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		3DBE0B84183C8CD400841FB8 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		3DBE0B86183F2EDB00841FB8 /* WordsLoaderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsLoaderHelper.h; sourceTree = "<group>"; };
+		3DBE0B87183F2EDB00841FB8 /* WordsLoaderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsLoaderHelper.m; sourceTree = "<group>"; };
+		73F7D50318434DCC006171C2 /* Sound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sound.png; sourceTree = "<group>"; };
+		73F7D50518434DDA006171C2 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		73F7D50718435492006171C2 /* notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notes.png; sourceTree = "<group>"; };
+		D50137E017F0D04400CC4C98 /* iLearnLetters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLearnLetters.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D50137E317F0D04400CC4C98 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D50137E517F0D04400CC4C98 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D50137E717F0D04400CC4C98 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D50137E917F0D04400CC4C98 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D50137ED17F0D04400CC4C98 /* iLearnLetters-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iLearnLetters-Info.plist"; sourceTree = "<group>"; };
+		D50137EF17F0D04400CC4C98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D50137F117F0D04400CC4C98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D50137F317F0D04400CC4C98 /* iLearnLetters-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iLearnLetters-Prefix.pch"; sourceTree = "<group>"; };
+		D50137F417F0D04400CC4C98 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D50137F517F0D04400CC4C98 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D50137F717F0D04400CC4C98 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D50137F917F0D04400CC4C98 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D50137FB17F0D04400CC4C98 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D50137FE17F0D04400CC4C98 /* iLearnLetters.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iLearnLetters.xcdatamodel; sourceTree = "<group>"; };
+		D501380517F0D06700CC4C98 /* iPadStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPadStoryboard.storyboard; sourceTree = "<group>"; };
+		D501380717F0D56400CC4C98 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		D501380917F0D59700CC4C98 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D501380B17F0D5A100CC4C98 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D501380D17F0D5B200CC4C98 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D501380F17F0D5D600CC4C98 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		D501381117F0D5E400CC4C98 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D501381317F0D5EC00CC4C98 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D501381517F0D5F400CC4C98 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D501381717F0D5FC00CC4C98 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D501381917F0D60300CC4C98 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D501381D17F0D71000CC4C98 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D501381E17F0D71000CC4C98 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		D501382017F0D72400CC4C98 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		D501382117F0D72400CC4C98 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		D501382317F0D73800CC4C98 /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
+		D501382417F0D73800CC4C98 /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
+		D501382617F0E75300CC4C98 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		D501382717F0E75300CC4C98 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		D501382A17F10A0500CC4C98 /* WordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsViewController.h; sourceTree = "<group>"; };
+		D501382B17F10A0500CC4C98 /* WordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsViewController.m; sourceTree = "<group>"; };
+		D501382D17F10CB400CC4C98 /* easy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = easy.txt; sourceTree = "<group>"; };
+		D501382F17F1155200CC4C98 /* Google_TTS_BySham.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Google_TTS_BySham.h; sourceTree = "<group>"; };
+		D501383017F1155200CC4C98 /* libGoogle_TTS_ByShamsu_Universal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogle_TTS_ByShamsu_Universal.a; sourceTree = "<group>"; };
+		D501383217F1157D00CC4C98 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D50299B1181C562F00969A08 /* logsignpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logsignpage.png; sourceTree = "<group>"; };
+		D50299B3181C5D3100969A08 /* gameButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameButtonPressed.png; sourceTree = "<group>"; };
+		D50299B4181C5D3100969A08 /* gameButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameButton.png; sourceTree = "<group>"; };
+		D50299B5181C5D3100969A08 /* learnButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learnButtonPressed.png; sourceTree = "<group>"; };
+		D50299B6181C5D3100969A08 /* learnButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learnButton.png; sourceTree = "<group>"; };
+		D51221B8181CA00B00B23366 /* iLearnLettersUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iLearnLettersUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D51221B9181CA00B00B23366 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D51221BF181CA00B00B23366 /* iLearnLettersUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iLearnLettersUnitTests-Info.plist"; sourceTree = "<group>"; };
+		D51221C1181CA00B00B23366 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D51221C3181CA00B00B23366 /* iLearnLettersUnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iLearnLettersUnitTests.h; sourceTree = "<group>"; };
+		D51221C4181CA00B00B23366 /* iLearnLettersUnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iLearnLettersUnitTests.m; sourceTree = "<group>"; };
+		D51221C6181CA00B00B23366 /* iLearnLettersUnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iLearnLettersUnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		D51221CD181CA8EC00B23366 /* updateButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = updateButton.png; sourceTree = "<group>"; };
+		D51221CE181CA8EC00B23366 /* addWordsPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addWordsPage.png; sourceTree = "<group>"; };
+		D51221D2181CAB0700B23366 /* testButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testButton.png; sourceTree = "<group>"; };
+		D5632DF6181AFE1B00C49012 /* UIView+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animation.h"; sourceTree = "<group>"; };
+		D5632DF7181AFE1B00C49012 /* UIView+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animation.m"; sourceTree = "<group>"; };
+		D5632DFA181AFECE00C49012 /* LearnLevelSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnLevelSelect.h; sourceTree = "<group>"; };
+		D5632DFB181AFECE00C49012 /* LearnLevelSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnLevelSelect.m; sourceTree = "<group>"; };
+		D5632DFD181AFF2B00C49012 /* LevelLearnSelect.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelLearnSelect.xib; sourceTree = "<group>"; };
+		D5632E00181B033300C49012 /* ParentsTeacherPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentsTeacherPageViewController.h; sourceTree = "<group>"; };
+		D5632E01181B033300C49012 /* ParentsTeacherPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentsTeacherPageViewController.m; sourceTree = "<group>"; };
+		D5632E03181B085300C49012 /* hard.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hard.txt; sourceTree = "<group>"; };
+		D5632E0C181B475500C49012 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Word.h; path = ../Word.h; sourceTree = "<group>"; };
+		D5632E0D181B475500C49012 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Word.m; path = ../Word.m; sourceTree = "<group>"; };
+		D5632E0F181B475600C49012 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = List.h; path = ../List.h; sourceTree = "<group>"; };
+		D5632E10181B475600C49012 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = List.m; path = ../List.m; sourceTree = "<group>"; };
+		D5B006FD18301F0100E13E56 /* levelSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = levelSelectViewController.h; sourceTree = "<group>"; };
+		D5B006FE18301F0100E13E56 /* levelSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = levelSelectViewController.m; sourceTree = "<group>"; };
+		D5B00701183156B200E13E56 /* StatPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatPageViewController.h; sourceTree = "<group>"; };
+		D5B00702183156B200E13E56 /* StatPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatPageViewController.m; sourceTree = "<group>"; };
+		D5B00704183157A100E13E56 /* pieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pieChartView.h; sourceTree = "<group>"; };
+		D5B00705183157A100E13E56 /* pieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pieChartView.m; sourceTree = "<group>"; };
+		D5B0070918315A9100E13E56 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		D5B0070B18315EA200E13E56 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		D5B0070C18315EA200E13E56 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		D5F2009C181DB609004B013D /* statistics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statistics.png; sourceTree = "<group>"; };
+		D5F2009E181DB747004B013D /* editWordListButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editWordListButton.png; sourceTree = "<group>"; };
+		E35791371842DF4F00CFF680 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
+		E35EB0911842D4D600BCA468 /* startButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startButton.png; sourceTree = "<group>"; };
+		E3625ADB1842D85B00A9ED6A /* paint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paint.jpg; sourceTree = "<group>"; };
+		E3A74DD71841BB8500A69076 /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
+		E3A74DD81841BB8500A69076 /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D50137DD17F0D04400CC4C98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5B0070A18315A9100E13E56 /* MessageUI.framework in Frameworks */,
+				D501383317F1157D00CC4C98 /* AVFoundation.framework in Frameworks */,
+				D501381A17F0D60300CC4C98 /* SystemConfiguration.framework in Frameworks */,
+				D501381817F0D5FC00CC4C98 /* StoreKit.framework in Frameworks */,
+				D501381617F0D5F400CC4C98 /* Security.framework in Frameworks */,
+				D501381417F0D5EC00CC4C98 /* QuartzCore.framework in Frameworks */,
+				D501381217F0D5E400CC4C98 /* MobileCoreServices.framework in Frameworks */,
+				D501381017F0D5D600CC4C98 /* libz.1.1.3.dylib in Frameworks */,
+				D501380E17F0D5B200CC4C98 /* CoreLocation.framework in Frameworks */,
+				D50137E817F0D04400CC4C98 /* CoreGraphics.framework in Frameworks */,
+				D501380C17F0D5A100CC4C98 /* CFNetwork.framework in Frameworks */,
+				D501380A17F0D59700CC4C98 /* AudioToolbox.framework in Frameworks */,
+				D50137E417F0D04400CC4C98 /* UIKit.framework in Frameworks */,
+				D50137E617F0D04400CC4C98 /* Foundation.framework in Frameworks */,
+				D50137EA17F0D04400CC4C98 /* CoreData.framework in Frameworks */,
+				D501380817F0D56400CC4C98 /* Parse.framework in Frameworks */,
+				D501383117F1155200CC4C98 /* libGoogle_TTS_ByShamsu_Universal.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D51221B4181CA00B00B23366 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D51221BA181CA00B00B23366 /* SenTestingKit.framework in Frameworks */,
+				D51221BB181CA00B00B23366 /* UIKit.framework in Frameworks */,
+				D51221BC181CA00B00B23366 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DBE0B82183C8C1900841FB8 /* GamePage */ = {
+			isa = PBXGroup;
+			children = (
+				3DBE0B83183C8CD400841FB8 /* GameViewController.h */,
+				3DBE0B84183C8CD400841FB8 /* GameViewController.m */,
+			);
+			name = GamePage;
+			sourceTree = "<group>";
+		};
+		D50137D717F0D04400CC4C98 = {
+			isa = PBXGroup;
+			children = (
+				D50137EB17F0D04400CC4C98 /* iLearnLetters */,
+				D51221BD181CA00B00B23366 /* iLearnLettersUnitTests */,
+				D50137E217F0D04400CC4C98 /* Frameworks */,
+				D50137E117F0D04400CC4C98 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D50137E117F0D04400CC4C98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D50137E017F0D04400CC4C98 /* iLearnLetters.app */,
+				D51221B8181CA00B00B23366 /* iLearnLettersUnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D50137E217F0D04400CC4C98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5B0070918315A9100E13E56 /* MessageUI.framework */,
+				D501383217F1157D00CC4C98 /* AVFoundation.framework */,
+				D501382F17F1155200CC4C98 /* Google_TTS_BySham.h */,
+				D501383017F1155200CC4C98 /* libGoogle_TTS_ByShamsu_Universal.a */,
+				D501381917F0D60300CC4C98 /* SystemConfiguration.framework */,
+				D501381717F0D5FC00CC4C98 /* StoreKit.framework */,
+				D501381517F0D5F400CC4C98 /* Security.framework */,
+				D501381317F0D5EC00CC4C98 /* QuartzCore.framework */,
+				D501381117F0D5E400CC4C98 /* MobileCoreServices.framework */,
+				D501380F17F0D5D600CC4C98 /* libz.1.1.3.dylib */,
+				D501380D17F0D5B200CC4C98 /* CoreLocation.framework */,
+				D501380B17F0D5A100CC4C98 /* CFNetwork.framework */,
+				D501380917F0D59700CC4C98 /* AudioToolbox.framework */,
+				D501380717F0D56400CC4C98 /* Parse.framework */,
+				D50137E317F0D04400CC4C98 /* UIKit.framework */,
+				D50137E517F0D04400CC4C98 /* Foundation.framework */,
+				D50137E717F0D04400CC4C98 /* CoreGraphics.framework */,
+				D50137E917F0D04400CC4C98 /* CoreData.framework */,
+				D51221B9181CA00B00B23366 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D50137EB17F0D04400CC4C98 /* iLearnLetters */ = {
+			isa = PBXGroup;
+			children = (
+				D5B007001831569900E13E56 /* StatPage */,
+				D501381B17F0D6CC00CC4C98 /* Login/Signup */,
+				D501381C17F0D6DE00CC4C98 /* MainPage */,
+				D5632DFF181B030900C49012 /* ParentsTeacherPage */,
+				D5632E05181B46DA00C49012 /* CoreData */,
+				D501382917F109DF00CC4C98 /* LearnPage */,
+				3DBE0B82183C8C1900841FB8 /* GamePage */,
+				D5632DF9181AFE9300C49012 /* SelectView */,
+				D5B006FC18301EE100E13E56 /* SelectLevel */,
+				D50137F417F0D04400CC4C98 /* AppDelegate.h */,
+				D50137F517F0D04400CC4C98 /* AppDelegate.m */,
+				D50137FD17F0D04400CC4C98 /* iLearnLetters.xcdatamodeld */,
+				D501380517F0D06700CC4C98 /* iPadStoryboard.storyboard */,
+				D50137EC17F0D04400CC4C98 /* Supporting Files */,
+			);
+			path = iLearnLetters;
+			sourceTree = "<group>";
+		};
+		D50137EC17F0D04400CC4C98 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D51221B2181C9FAD00B23366 /* images */,
+				D501382D17F10CB400CC4C98 /* easy.txt */,
+				D5632E03181B085300C49012 /* hard.txt */,
+				D501382617F0E75300CC4C98 /* Reachability.h */,
+				D501382717F0E75300CC4C98 /* Reachability.m */,
+				D50137ED17F0D04400CC4C98 /* iLearnLetters-Info.plist */,
+				D50137EE17F0D04400CC4C98 /* InfoPlist.strings */,
+				D50137F117F0D04400CC4C98 /* main.m */,
+				D50137F317F0D04400CC4C98 /* iLearnLetters-Prefix.pch */,
+				D50137F717F0D04400CC4C98 /* Default.png */,
+				D50137F917F0D04400CC4C98 /* Default@2x.png */,
+				D50137FB17F0D04400CC4C98 /* Default-568h@2x.png */,
+				3DBE0B86183F2EDB00841FB8 /* WordsLoaderHelper.h */,
+				3DBE0B87183F2EDB00841FB8 /* WordsLoaderHelper.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D501381B17F0D6CC00CC4C98 /* Login/Signup */ = {
+			isa = PBXGroup;
+			children = (
+				D501381D17F0D71000CC4C98 /* LoginViewController.h */,
+				D501381E17F0D71000CC4C98 /* LoginViewController.m */,
+				D501382017F0D72400CC4C98 /* SignUpViewController.h */,
+				D501382117F0D72400CC4C98 /* SignUpViewController.m */,
+				E3A74DD71841BB8500A69076 /* ScrollViewController.h */,
+				E3A74DD81841BB8500A69076 /* ScrollViewController.m */,
+			);
+			name = Login/Signup;
+			sourceTree = "<group>";
+		};
+		D501381C17F0D6DE00CC4C98 /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				D501382317F0D73800CC4C98 /* MainPageViewController.h */,
+				D501382417F0D73800CC4C98 /* MainPageViewController.m */,
+			);
+			name = MainPage;
+			sourceTree = "<group>";
+		};
+		D501382917F109DF00CC4C98 /* LearnPage */ = {
+			isa = PBXGroup;
+			children = (
+				D5B0070B18315EA200E13E56 /* SettingsViewController.m */,
+				D5B0070C18315EA200E13E56 /* SettingsViewController.h */,
+				D501382A17F10A0500CC4C98 /* WordsViewController.h */,
+				D501382B17F10A0500CC4C98 /* WordsViewController.m */,
+			);
+			name = LearnPage;
+			sourceTree = "<group>";
+		};
+		D51221B2181C9FAD00B23366 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				73F7D50718435492006171C2 /* notes.png */,
+				73F7D50518434DDA006171C2 /* refresh.png */,
+				73F7D50318434DCC006171C2 /* Sound.png */,
+				E35791371842DF4F00CFF680 /* next.png */,
+				E3625ADB1842D85B00A9ED6A /* paint.jpg */,
+				E35EB0911842D4D600BCA468 /* startButton.png */,
+				D5F2009E181DB747004B013D /* editWordListButton.png */,
+				D5F2009C181DB609004B013D /* statistics.png */,
+				D51221D2181CAB0700B23366 /* testButton.png */,
+				D51221CD181CA8EC00B23366 /* updateButton.png */,
+				D51221CE181CA8EC00B23366 /* addWordsPage.png */,
+				D50299B3181C5D3100969A08 /* gameButtonPressed.png */,
+				D50299B4181C5D3100969A08 /* gameButton.png */,
+				D50299B5181C5D3100969A08 /* learnButtonPressed.png */,
+				D50299B6181C5D3100969A08 /* learnButton.png */,
+				D50299B1181C562F00969A08 /* logsignpage.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		D51221BD181CA00B00B23366 /* iLearnLettersUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				D51221C3181CA00B00B23366 /* iLearnLettersUnitTests.h */,
+				D51221C4181CA00B00B23366 /* iLearnLettersUnitTests.m */,
+				D51221BE181CA00B00B23366 /* Supporting Files */,
+			);
+			path = iLearnLettersUnitTests;
+			sourceTree = "<group>";
+		};
+		D51221BE181CA00B00B23366 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D51221BF181CA00B00B23366 /* iLearnLettersUnitTests-Info.plist */,
+				D51221C0181CA00B00B23366 /* InfoPlist.strings */,
+				D51221C6181CA00B00B23366 /* iLearnLettersUnitTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D5632DF9181AFE9300C49012 /* SelectView */ = {
+			isa = PBXGroup;
+			children = (
+				D5632DF6181AFE1B00C49012 /* UIView+Animation.h */,
+				D5632DF7181AFE1B00C49012 /* UIView+Animation.m */,
+				D5632DFA181AFECE00C49012 /* LearnLevelSelect.h */,
+				D5632DFB181AFECE00C49012 /* LearnLevelSelect.m */,
+				D5632DFD181AFF2B00C49012 /* LevelLearnSelect.xib */,
+			);
+			name = SelectView;
+			sourceTree = "<group>";
+		};
+		D5632DFF181B030900C49012 /* ParentsTeacherPage */ = {
+			isa = PBXGroup;
+			children = (
+				D5632E00181B033300C49012 /* ParentsTeacherPageViewController.h */,
+				D5632E01181B033300C49012 /* ParentsTeacherPageViewController.m */,
+			);
+			name = ParentsTeacherPage;
+			sourceTree = "<group>";
+		};
+		D5632E05181B46DA00C49012 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D5632E0F181B475600C49012 /* List.h */,
+				D5632E10181B475600C49012 /* List.m */,
+				D5632E0C181B475500C49012 /* Word.h */,
+				D5632E0D181B475500C49012 /* Word.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		D5B006FC18301EE100E13E56 /* SelectLevel */ = {
+			isa = PBXGroup;
+			children = (
+				D5B006FD18301F0100E13E56 /* levelSelectViewController.h */,
+				D5B006FE18301F0100E13E56 /* levelSelectViewController.m */,
+			);
+			name = SelectLevel;
+			sourceTree = "<group>";
+		};
+		D5B007001831569900E13E56 /* StatPage */ = {
+			isa = PBXGroup;
+			children = (
+				D5B00708183157B000E13E56 /* PieChartView */,
+				D5B00701183156B200E13E56 /* StatPageViewController.h */,
+				D5B00702183156B200E13E56 /* StatPageViewController.m */,
+			);
+			name = StatPage;
+			sourceTree = "<group>";
+		};
+		D5B00708183157B000E13E56 /* PieChartView */ = {
+			isa = PBXGroup;
+			children = (
+				D5B00704183157A100E13E56 /* pieChartView.h */,
+				D5B00705183157A100E13E56 /* pieChartView.m */,
+			);
+			name = PieChartView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D50137DF17F0D04400CC4C98 /* iLearnLetters */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D501380217F0D04400CC4C98 /* Build configuration list for PBXNativeTarget "iLearnLetters" */;
+			buildPhases = (
+				D50137DC17F0D04400CC4C98 /* Sources */,
+				D50137DD17F0D04400CC4C98 /* Frameworks */,
+				D50137DE17F0D04400CC4C98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iLearnLetters;
+			productName = iLearnLetters;
+			productReference = D50137E017F0D04400CC4C98 /* iLearnLetters.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D51221B7181CA00B00B23366 /* iLearnLettersUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D51221C7181CA00B00B23366 /* Build configuration list for PBXNativeTarget "iLearnLettersUnitTests" */;
+			buildPhases = (
+				D51221B3181CA00B00B23366 /* Sources */,
+				D51221B4181CA00B00B23366 /* Frameworks */,
+				D51221B5181CA00B00B23366 /* Resources */,
+				D51221B6181CA00B00B23366 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D51221CB181CA02F00B23366 /* PBXTargetDependency */,
+			);
+			name = iLearnLettersUnitTests;
+			productName = iLearnLettersUnitTests;
+			productReference = D51221B8181CA00B00B23366 /* iLearnLettersUnitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D50137D817F0D04400CC4C98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Rouzbeh Roshanravan";
+			};
+			buildConfigurationList = D50137DB17F0D04400CC4C98 /* Build configuration list for PBXProject "iLearnLetters" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D50137D717F0D04400CC4C98;
+			productRefGroup = D50137E117F0D04400CC4C98 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D50137DF17F0D04400CC4C98 /* iLearnLetters */,
+				D51221B7181CA00B00B23366 /* iLearnLettersUnitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D50137DE17F0D04400CC4C98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D50137F017F0D04400CC4C98 /* InfoPlist.strings in Resources */,
+				73F7D50418434DCC006171C2 /* Sound.png in Resources */,
+				D50137F817F0D04400CC4C98 /* Default.png in Resources */,
+				D50137FA17F0D04400CC4C98 /* Default@2x.png in Resources */,
+				D50137FC17F0D04400CC4C98 /* Default-568h@2x.png in Resources */,
+				D501380617F0D06700CC4C98 /* iPadStoryboard.storyboard in Resources */,
+				D501382E17F10CB400CC4C98 /* easy.txt in Resources */,
+				D5632DFE181AFF2B00C49012 /* LevelLearnSelect.xib in Resources */,
+				D5632E04181B085300C49012 /* hard.txt in Resources */,
+				D50299B2181C562F00969A08 /* logsignpage.png in Resources */,
+				D50299B7181C5D3100969A08 /* gameButtonPressed.png in Resources */,
+				D50299B8181C5D3100969A08 /* gameButton.png in Resources */,
+				D50299B9181C5D3100969A08 /* learnButtonPressed.png in Resources */,
+				D50299BA181C5D3100969A08 /* learnButton.png in Resources */,
+				D51221D0181CA8EC00B23366 /* updateButton.png in Resources */,
+				D51221D1181CA8EC00B23366 /* addWordsPage.png in Resources */,
+				D51221D3181CAB0700B23366 /* testButton.png in Resources */,
+				D5F2009D181DB609004B013D /* statistics.png in Resources */,
+				D5F2009F181DB747004B013D /* editWordListButton.png in Resources */,
+				E35EB0921842D4D600BCA468 /* startButton.png in Resources */,
+				E3625ADC1842D85B00A9ED6A /* paint.jpg in Resources */,
+				73F7D50818435492006171C2 /* notes.png in Resources */,
+				E35791381842DF4F00CFF680 /* next.png in Resources */,
+				73F7D50618434DDA006171C2 /* refresh.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D51221B5181CA00B00B23366 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D51221C2181CA00B00B23366 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D51221B6181CA00B00B23366 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D50137DC17F0D04400CC4C98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D50137F217F0D04400CC4C98 /* main.m in Sources */,
+				D50137F617F0D04400CC4C98 /* AppDelegate.m in Sources */,
+				D50137FF17F0D04400CC4C98 /* iLearnLetters.xcdatamodeld in Sources */,
+				D501381F17F0D71000CC4C98 /* LoginViewController.m in Sources */,
+				3DBE0B85183C8CD400841FB8 /* GameViewController.m in Sources */,
+				D501382217F0D72400CC4C98 /* SignUpViewController.m in Sources */,
+				D501382517F0D73800CC4C98 /* MainPageViewController.m in Sources */,
+				3DBE0B88183F2EDB00841FB8 /* WordsLoaderHelper.m in Sources */,
+				D501382817F0E75300CC4C98 /* Reachability.m in Sources */,
+				D501382C17F10A0500CC4C98 /* WordsViewController.m in Sources */,
+				D5632DF8181AFE1B00C49012 /* UIView+Animation.m in Sources */,
+				D5632DFC181AFECE00C49012 /* LearnLevelSelect.m in Sources */,
+				D5632E02181B033300C49012 /* ParentsTeacherPageViewController.m in Sources */,
+				D5632E0E181B475500C49012 /* Word.m in Sources */,
+				D5632E11181B475600C49012 /* List.m in Sources */,
+				D5B006FF18301F0100E13E56 /* levelSelectViewController.m in Sources */,
+				D5B00703183156B200E13E56 /* StatPageViewController.m in Sources */,
+				D5B00706183157A100E13E56 /* pieChartView.m in Sources */,
+				D5B0070D18315EA200E13E56 /* SettingsViewController.m in Sources */,
+				E3A74DD91841BB8500A69076 /* ScrollViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D51221B3181CA00B00B23366 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D51221C5181CA00B00B23366 /* iLearnLettersUnitTests.m in Sources */,
+				D5B00707183157A100E13E56 /* pieChartView.m in Sources */,
+				D5B0070E18315EA200E13E56 /* SettingsViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D51221CB181CA02F00B23366 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D50137DF17F0D04400CC4C98 /* iLearnLetters */;
+			targetProxy = D51221CA181CA02F00B23366 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D50137EE17F0D04400CC4C98 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D50137EF17F0D04400CC4C98 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D51221C0181CA00B00B23366 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D51221C1181CA00B00B23366 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D501380017F0D04400CC4C98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		D501380117F0D04400CC4C98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D501380317F0D04400CC4C98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iLearnLetters/iLearnLetters-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "iLearnLetters/iLearnLetters-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D501380417F0D04400CC4C98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iLearnLetters/iLearnLetters-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "iLearnLetters/iLearnLetters-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D51221C8181CA00B00B23366 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iLearnLetters.app/iLearnLetters";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iLearnLettersUnitTests/iLearnLettersUnitTests-Prefix.pch";
+				INFOPLIST_FILE = "iLearnLettersUnitTests/iLearnLettersUnitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D51221C9181CA00B00B23366 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iLearnLetters.app/iLearnLetters";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iLearnLettersUnitTests/iLearnLettersUnitTests-Prefix.pch";
+				INFOPLIST_FILE = "iLearnLettersUnitTests/iLearnLettersUnitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D50137DB17F0D04400CC4C98 /* Build configuration list for PBXProject "iLearnLetters" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D501380017F0D04400CC4C98 /* Debug */,
+				D501380117F0D04400CC4C98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D501380217F0D04400CC4C98 /* Build configuration list for PBXNativeTarget "iLearnLetters" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D501380317F0D04400CC4C98 /* Debug */,
+				D501380417F0D04400CC4C98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D51221C7181CA00B00B23366 /* Build configuration list for PBXNativeTarget "iLearnLettersUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D51221C8181CA00B00B23366 /* Debug */,
+				D51221C9181CA00B00B23366 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D50137FD17F0D04400CC4C98 /* iLearnLetters.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D50137FE17F0D04400CC4C98 /* iLearnLetters.xcdatamodel */,
+			);
+			currentVersion = D50137FE17F0D04400CC4C98 /* iLearnLetters.xcdatamodel */;
+			path = iLearnLetters.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D50137D817F0D04400CC4C98 /* Project object */;
+}

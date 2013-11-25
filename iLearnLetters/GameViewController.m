@@ -30,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UIButton *speakButton;
+@property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstLastLabel;
 
 @end
 
@@ -94,7 +96,10 @@
     
     [self.controlButton setTitle:@"Start" forState:UIControlStateNormal];
     
+    self.questionLabel.text = @"Ready to play a game?";
+    self.firstLastLabel.text = @"";
     self.statusLabel.text = @"";
+    self.wordLabel.text = @"";
     self.speakButton.hidden = YES;
     self.progressBar.progress = 0;
 }
@@ -135,16 +140,16 @@
     // Set the question string label accordingly
     self.chooseFirstLetter = [self.levelSelected isEqualToString:@"easy"] ||(arc4random_uniform(100) % 2 == 0);
     
-    NSString* questionString = nil;
+    NSString* firstLast = nil;
     unichar ch;
     if (self.chooseFirstLetter)
     {
-        questionString = @"What's the first letter of the word you hear?";
+        firstLast = @"first";
         ch = [self.currentWord characterAtIndex:0];
     }
     else
     {
-        questionString = @"What's the last letter of the word you hear?";
+        firstLast = @"last";
         ch = [self.currentWord characterAtIndex:self.currentWord.length - 1];
     }
     
@@ -152,12 +157,16 @@
     
     self.answered = NO;
     
-    self.questionLabel.text = questionString;
+    self.questionLabel.text = @"What's the         letter of the word you hear?";
+    
+    self.firstLastLabel.text = firstLast;
     
     // Display four choices using buttons
     [self showChoices:4 include:self.currentAnswer];
-    
+
     self.statusLabel.text = @"";
+
+    self.wordLabel.text = @"";
     
     self.speakButton.hidden = NO;
     
@@ -275,20 +284,22 @@
     }
     else
     {
-        // Highlight the correct answer (button) with different color
-        for (UIButton* choiceButton in self.wordButtons)
-        {
-            if ([choiceButton.currentTitle isEqualToString:self.currentAnswer])
-            {
-                [choiceButton setBackgroundColor:[UIColor yellowColor]];
-            }
-        }
-
-        output = [NSString stringWithFormat:@"Sorry, it's not correct. The %@ letter of '%@' is: '%@'."  , self.chooseFirstLetter? @"first":@"last", self.currentWord, self.currentAnswer];
+        output = [NSString stringWithFormat:@"Sorry, it's not correct. The word is:"];
+        self.wordLabel.text = self.currentWord;
     }
+    
+    // Highlight the correct answer (button) with different color
+    for (UIButton* choiceButton in self.wordButtons)
+    {
+        if ([choiceButton.currentTitle isEqualToString:self.currentAnswer])
+        {
+            [choiceButton setBackgroundColor:[UIColor yellowColor]];
+        }
+    }
+    
     self.statusLabel.text = output;
     
-        self.controlButton.alpha = 1.0;
+    self.controlButton.alpha = 1.0;
     self.controlButton.enabled = YES;
     self.answered = YES;
     

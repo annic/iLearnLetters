@@ -33,11 +33,9 @@
 }
 
 -(void)drawGraph{
-
-        
-        self.pieView.val1 = 1;
-        self.pieView.val2 = 1;
-        self.pieView.val3 = 1;
+    
+    self.pieView.val1 = 0.8;
+    self.pieView.val2 = 0.2;
         
 }
 - (IBAction)emailResults:(id)sender {

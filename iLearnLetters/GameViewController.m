@@ -25,6 +25,7 @@
 @property NSString* currentWord;
 @property NSString* currentAnswer;
 @property BOOL answered;
+@property BOOL chooseFirstLetter;
 @property (weak, nonatomic) IBOutlet UIButton *controlButton;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
@@ -132,10 +133,11 @@
     
     // Choose the first or last letter - 50% chance for each
     // Set the question string label accordingly
-    BOOL chooseFirstLetter = [self.levelSelected isEqualToString:@"easy"] ||(arc4random_uniform(100) % 2 == 0);
+    self.chooseFirstLetter = [self.levelSelected isEqualToString:@"easy"] ||(arc4random_uniform(100) % 2 == 0);
+    
     NSString* questionString = nil;
     unichar ch;
-    if (chooseFirstLetter)
+    if (self.chooseFirstLetter)
     {
         questionString = @"What's the first letter of the word you hear?";
         ch = [self.currentWord characterAtIndex:0];
@@ -202,7 +204,11 @@
         }
     }
     
+    // Shuffle the choices
     [choiceSet shuffle];
+    
+    // Clear the word buttons from pervious run
+    [self.wordButtons removeAllObjects];
     
     // Draw the letters in choice set as buttons on the screen
     for (int i = 0; i < choiceSet.count; ++i)
@@ -232,8 +238,6 @@
     [self.wordButtons addObject: buttonToAdd];
     
     [self.view addSubview:buttonToAdd];
-    
-    
 }
 
 - (IBAction)speakButtonPressed:(id)sender
@@ -271,12 +275,29 @@
     }
     else
     {
-        output = [NSString stringWithFormat:@"Sorry, that's not correct. The word is %@."  ,self.currentWord];
+        // Highlight the correct answer (button) with different color
+        for (UIButton* choiceButton in self.wordButtons)
+        {
+            if ([choiceButton.currentTitle isEqualToString:self.currentAnswer])
+            {
+                [choiceButton setBackgroundColor:[UIColor yellowColor]];
+            }
+        }
+
+        output = [NSString stringWithFormat:@"Sorry, it's not correct. The %@ letter of '%@' is: '%@'."  , self.chooseFirstLetter? @"first":@"last", self.currentWord, self.currentAnswer];
     }
     self.statusLabel.text = output;
-    self.controlButton.alpha = 1.0;
+    
+        self.controlButton.alpha = 1.0;
     self.controlButton.enabled = YES;
     self.answered = YES;
+    
+    // If the user has answed the last question, save the result
+    // for the stats page
+    if (self.currentNumQuesion == self.totalNumQuestions)
+    {
+        // TODO: Add sore to the stats
+    }
 }
 
 @end

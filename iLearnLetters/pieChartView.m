@@ -59,7 +59,7 @@
     endDeg = (self.val1 * mult);
     
         if(startDeg != endDeg){
-        CGContextSetRGBFillColor(ctx, 1.0, 20.0, 0.0, 1.0);
+        CGContextSetRGBFillColor(ctx, 1.0, 1.0, 0.0, 1.0);
         CGContextMoveToPoint(ctx, x, y);
         CGContextAddArc(ctx, x, y, r, (startDeg)*M_PI/180, (endDeg)*M_PI/180, 0);
         
@@ -71,7 +71,7 @@
     endDeg = endDeg + (self.val2 * mult);
     
     if(startDeg != endDeg){
-        CGContextSetRGBFillColor(ctx, 0.0, 0.0, 30.0, 1.0);
+        CGContextSetRGBFillColor(ctx, 1.0, 0.0, 0.0, 1.0);
         CGContextMoveToPoint(ctx, x, y);
         CGContextAddArc(ctx, x, y, r, (startDeg)*M_PI/180, (endDeg)*M_PI/180, 0);
         
@@ -83,7 +83,7 @@
     endDeg = endDeg + (self.val3 * mult);
     
     if(startDeg != endDeg){
-        CGContextSetRGBFillColor(ctx, 10.0, 0.0, 0.0, 1.0);
+        CGContextSetRGBFillColor(ctx, 0.0, 1.0, 0.0, 1.0);
         CGContextMoveToPoint(ctx, x, y);
         CGContextAddArc(ctx, x, y, r, (startDeg)*M_PI/180, (endDeg)*M_PI/180, 0);
         
@@ -95,7 +95,7 @@
     endDeg = endDeg + (self.val4 * mult);
     
     if(startDeg != endDeg){
-        CGContextSetRGBFillColor(ctx, 10.0, 10.0, 10.0, 1.0);
+        CGContextSetRGBFillColor(ctx, 0.0, 0.0, 1.0, 1.0);
         CGContextMoveToPoint(ctx, x, y);
         CGContextAddArc(ctx, x, y, r, (startDeg)*M_PI/180, (endDeg)*M_PI/180, 0);
         

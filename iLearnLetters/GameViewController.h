@@ -10,6 +10,8 @@
 
 @interface GameViewController : UIViewController
 
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @property (strong, nonatomic) NSString *levelSelected;
 
 @end

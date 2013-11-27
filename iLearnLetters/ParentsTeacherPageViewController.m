@@ -33,11 +33,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *currentList;
 @property (nonatomic,strong)Google_TTS_BySham *google_TTS_BySham;
 
-
 @end
 
 @implementation ParentsTeacherPageViewController
-
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;

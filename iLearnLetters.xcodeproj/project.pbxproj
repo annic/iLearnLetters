@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D30B2D31842CF54002CB364 /* StatsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D30B2D21842CF54002CB364 /* StatsInfo.m */; };
+		3D30B2D31842CF54002CB364 /* GameRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D30B2D21842CF54002CB364 /* GameRecord.m */; };
+		3D664EA11845B20400F03A44 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D664EA01845B20400F03A44 /* LineChartView.m */; };
 		3DBE0B85183C8CD400841FB8 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE0B84183C8CD400841FB8 /* GameViewController.m */; };
 		3DBE0B88183F2EDB00841FB8 /* WordsLoaderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE0B87183F2EDB00841FB8 /* WordsLoaderHelper.m */; };
 		D50137E417F0D04400CC4C98 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E317F0D04400CC4C98 /* UIKit.framework */; };
@@ -83,8 +84,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3D30B2D11842CF54002CB364 /* StatsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsInfo.h; sourceTree = "<group>"; };
-		3D30B2D21842CF54002CB364 /* StatsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsInfo.m; sourceTree = "<group>"; };
+		3D30B2D11842CF54002CB364 /* GameRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRecord.h; sourceTree = "<group>"; };
+		3D30B2D21842CF54002CB364 /* GameRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRecord.m; sourceTree = "<group>"; };
+		3D664E9F1845B20400F03A44 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
+		3D664EA01845B20400F03A44 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
 		3DBE0B83183C8CD400841FB8 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		3DBE0B84183C8CD400841FB8 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		3DBE0B86183F2EDB00841FB8 /* WordsLoaderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsLoaderHelper.h; sourceTree = "<group>"; };
@@ -399,6 +402,8 @@
 		D5632E05181B46DA00C49012 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				3D30B2D11842CF54002CB364 /* GameRecord.h */,
+				3D30B2D21842CF54002CB364 /* GameRecord.m */,
 				D5632E0F181B475600C49012 /* List.h */,
 				D5632E10181B475600C49012 /* List.m */,
 				D5632E0C181B475500C49012 /* Word.h */,
@@ -422,8 +427,8 @@
 				D5B00708183157B000E13E56 /* PieChartView */,
 				D5B00701183156B200E13E56 /* StatPageViewController.h */,
 				D5B00702183156B200E13E56 /* StatPageViewController.m */,
-				3D30B2D11842CF54002CB364 /* StatsInfo.h */,
-				3D30B2D21842CF54002CB364 /* StatsInfo.m */,
+				3D664E9F1845B20400F03A44 /* LineChartView.h */,
+				3D664EA01845B20400F03A44 /* LineChartView.m */,
 			);
 			name = StatPage;
 			sourceTree = "<group>";
@@ -570,11 +575,12 @@
 				3DBE0B88183F2EDB00841FB8 /* WordsLoaderHelper.m in Sources */,
 				D501382817F0E75300CC4C98 /* Reachability.m in Sources */,
 				D501382C17F10A0500CC4C98 /* WordsViewController.m in Sources */,
-				3D30B2D31842CF54002CB364 /* StatsInfo.m in Sources */,
+				3D30B2D31842CF54002CB364 /* GameRecord.m in Sources */,
 				D5632DF8181AFE1B00C49012 /* UIView+Animation.m in Sources */,
 				D5632DFC181AFECE00C49012 /* LearnLevelSelect.m in Sources */,
 				D5632E02181B033300C49012 /* ParentsTeacherPageViewController.m in Sources */,
 				D5632E0E181B475500C49012 /* Word.m in Sources */,
+				3D664EA11845B20400F03A44 /* LineChartView.m in Sources */,
 				D5632E11181B475600C49012 /* List.m in Sources */,
 				D5B006FF18301F0100E13E56 /* levelSelectViewController.m in Sources */,
 				D5B00703183156B200E13E56 /* StatPageViewController.m in Sources */,

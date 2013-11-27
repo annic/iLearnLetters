@@ -7,7 +7,12 @@
 //
 
 #import "GameViewController.h"
-#include "WordsLoaderHelper.h"
+#import "WordsLoaderHelper.h"
+#import "AppDelegate.h"
+#import "GameRecord.h"
+#import "Word.h"
+#import <Parse/Parse.h>
+
 #import "Google_TTS_BySham.h"
 
 @interface GameViewController ()
@@ -37,6 +42,8 @@
 
 @implementation GameViewController
 
+@synthesize managedObjectContext = _managedObjectContext;
+
 -(NSMutableArray *)arrayOfWords{
     if(!_arrayOfWords){
         _arrayOfWords = [[NSMutableArray alloc] init];
@@ -57,6 +64,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    _managedObjectContext = [appDelegate managedObjectContext];
+    
     self.gameStarted = NO;
     self.currentNumQuesion = 0;
     self.correctAnswers = 0;    
@@ -307,8 +318,33 @@
     // for the stats page
     if (self.currentNumQuesion == self.totalNumQuestions)
     {
-        // TODO: Add sore to the stats
+        [self saveStats];
     }
+}
+
+- (void)saveStats
+{
+    GameRecord *record = [NSEntityDescription insertNewObjectForEntityForName:@"GameRecord"
+                                            inManagedObjectContext:self.managedObjectContext];
+    PFUser* user = [PFUser currentUser];
+    if (user)
+    {
+        record.user = user.username;
+    }
+    record.level = self.levelSelected;
+    record.correct = self.correctAnswers;
+    record.total = self.totalNumQuestions;
+    record.date = [NSDate date];
+    
+    NSError *error = nil;
+    
+    //Save objects
+    if(![_managedObjectContext save:&error]){
+        //Handle Error
+        NSLog(@"Problem saving stats info to core data");
+    }
+
+    
 }
 
 @end

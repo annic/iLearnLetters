@@ -7,16 +7,24 @@
 //
 
 #import "StatPageViewController.h"
-#import "pieChartView.h"
+#import "AppDelegate.h"
+#import "GameRecord.h"
+#import "LineChartView.h"
+#import <Parse/Parse.h>
 #import <MessageUI/MessageUI.h>
 #import <QuartzCore/QuartzCore.h>
 
 @interface StatPageViewController () <MFMailComposeViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet pieChartView *pieView;
+
 @property (strong, nonatomic) IBOutlet UIScrollView *wallScroll;
+@property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
+@property NSMutableArray* statsInfo;
+
 @end
 
 @implementation StatPageViewController
+
+@synthesize managedObjectContext = _managedObjectContext;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,15 +37,76 @@
 
 - (void)viewDidLoad
 {
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    _managedObjectContext = [appDelegate managedObjectContext];
+
+    [self loadStats];
     [self drawGraph];
 }
 
--(void)drawGraph{
+- (void)loadStats
+{
+    // Create a fetch request to retrieve stats from core data
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity =
+    [NSEntityDescription entityForName:@"GameRecord"
+                inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:entity];
     
-    self.pieView.val1 = 0.8;
-    self.pieView.val2 = 0.2;
-        
+    PFUser* user = [PFUser currentUser];
+    if (user)
+    {
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"user == %@", user.username];
+        [request setPredicate:predicate];
+    }
+    
+    // Sort by the date in ascending order
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"date" ascending:YES];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    // Run the fetch request
+    NSError* error;
+    NSArray* records = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (records)
+    {
+        self.statsInfo = [records mutableCopy];
+    }
+    else
+    {
+        NSLog(@"Failed to load stats from core data");
+    }
 }
+
+- (void)drawGraph
+{
+    if (!self.statsInfo)
+        return;
+    
+    for (GameRecord* record in self.statsInfo)
+    {
+        float score = (float)record.correct / record.total;
+        NSNumber* data = [NSNumber numberWithFloat:score];
+        
+        if ([record.level isEqualToString:@"easy"])
+        {
+            [self.lineChartView.data0 addObject:data];
+        }
+        else if ([record.level isEqualToString:@"hard"])
+        {
+            [self.lineChartView.data1 addObject:data];
+        }
+        else
+        {
+            [self.lineChartView.data2 addObject:data];
+        }
+    }
+    
+    self.lineChartView.color0 = [UIColor greenColor];
+    self.lineChartView.color1 = [UIColor redColor];
+    self.lineChartView.color2 = [UIColor yellowColor];
+}
+
 - (IBAction)emailResults:(id)sender {
     [self.wallScroll setBackgroundColor:[UIColor clearColor]];
     
@@ -51,10 +120,10 @@
         [mailer setToRecipients:toRecipients];
         
        
-        UIGraphicsBeginImageContextWithOptions(self.pieView.bounds.size, self.pieView.opaque, 0.0);
+        // UIGraphicsBeginImageContextWithOptions(self.pieView.bounds.size, self.pieView.opaque, 0.0);
         
         
-        [self.pieView.layer renderInContext:UIGraphicsGetCurrentContext()];
+        // [self.pieView.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
         
         NSData *imageData = UIImagePNGRepresentation(img);

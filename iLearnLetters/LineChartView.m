@@ -1,9 +1,19 @@
 //
-//  LineChartView.m
-//  iLearnLetters
+//  Purpose: Implementation for class LineChartView
 //
-//  Created by Anni Cao on 2013-11-26.
-//  Copyright (c) 2013 Rouzbeh Roshanravan. All rights reserved.
+//  Application: iLearnLetters
+//
+//  Team: Flying Moose - Group 1
+//
+//  Revision history:
+//
+//  Date            Author                      Description
+//  ---------------------------------------------------------------------------
+//  2013-11-26      Anni Cao                    Original definition
+//
+//  Known bugs: N/A
+//
+//  Copyright (c) 2013 Anni Cao. All rights reserved.
 //
 
 #import "LineChartView.h"

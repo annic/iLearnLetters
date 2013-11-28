@@ -10,6 +10,8 @@
 //  Date            Author                      Description
 //  ---------------------------------------------------------------------------
 //  2013-11-24      Anni Cao                    Original definition
+//  2013-11-28      Anni Cao                    Added method to load custom words
+//  2013-11-24      Anni Cao                    Added phonics dictionary creation
 //
 //  Known bugs: N/A
 //
@@ -22,6 +24,8 @@
 @interface WordsLoaderHelper : NSObject
 
 +(void)extractWordsFromFile:(NSString*)level data:(NSMutableArray*)array;
+
++(NSDictionary*)createPhonicsDictionary;
 
 @end
 

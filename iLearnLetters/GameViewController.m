@@ -31,6 +31,8 @@
 @property NSString* currentAnswer;
 @property BOOL answered;
 @property BOOL chooseFirstLetter;
+@property UIColor* ctlBtnDefaultColor;
+
 @property (weak, nonatomic) IBOutlet UIButton *controlButton;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
@@ -79,7 +81,8 @@
     
     if (self.arrayOfWords.count == 0)
     {
-        self.controlButton.alpha = 0.4;
+        [self.controlButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        
         self.controlButton.enabled = NO;
         NSString* message = [NSString stringWithFormat:@"Please add words to the dictionary of level '%@' first!", self.levelSelected];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -181,7 +184,10 @@
     
     self.speakButton.hidden = NO;
     
-    self.controlButton.alpha = 0.4;
+    self.ctlBtnDefaultColor = [self.controlButton titleColorForState:UIControlStateNormal];
+    
+    [self.controlButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    
     self.controlButton.enabled = NO;
     
     self.currentNumQuesion++;
@@ -310,7 +316,8 @@
     
     self.statusLabel.text = output;
     
-    self.controlButton.alpha = 1.0;
+    [self.controlButton setTitleColor:self.ctlBtnDefaultColor forState:UIControlStateNormal];
+    
     self.controlButton.enabled = YES;
     self.answered = YES;
     

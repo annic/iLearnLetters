@@ -142,19 +142,55 @@
         NSArray *toRecipients = [NSArray arrayWithObjects:@"", nil];
         [mailer setToRecipients:toRecipients];
         
-       
-        // UIGraphicsBeginImageContextWithOptions(self.pieView.bounds.size, self.pieView.opaque, 0.0);
+        UIGraphicsBeginImageContextWithOptions(self.lineChartView.bounds.size, self.lineChartView.opaque, 0.0);
         
-        
-        // [self.pieView.layer renderInContext:UIGraphicsGetCurrentContext()];
+        [self.lineChartView.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
         
         NSData *imageData = UIImagePNGRepresentation(img);
         
         UIGraphicsEndImageContext();
 
-        [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"moleImage"];
-        NSString *emailBody = @"The following is the progress report of your child";
+        [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"LineChart.png"];
+        
+        NSString *emailHeader = @"The following is the progress report of your child: \n\n";
+        
+        NSMutableString* emailBody = [NSMutableString new];
+        [emailBody appendString:emailHeader];
+        
+        float sum = 0;
+        int count = self.lineChartView.data0.count;
+        if (count > 0)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                sum+= [[self.lineChartView.data0 objectAtIndex:i] floatValue];
+            }
+            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d easy level games with an average score of: %.1f%%\n", count, sum*100/count]];
+        }
+        
+        sum = 0;
+        count = self.lineChartView.data1.count;
+        if (count > 0)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                sum+= [[self.lineChartView.data1 objectAtIndex:i] floatValue];
+            }
+            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d hard level games with an average score of: %.1f%%\n", count, sum*100/count]];
+        }
+        
+        sum = 0;
+        count = self.lineChartView.data2.count;
+        if (count > 0)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                sum+= [[self.lineChartView.data2 objectAtIndex:i] floatValue];
+            }
+            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d hard level games with an average score of: %.1f%%\n", count, sum*100/count]];
+        }
+        
         [mailer setMessageBody:emailBody isHTML:NO];
         [self presentViewController:mailer animated:YES completion:^{
             NSLog(@"mailer displayed");

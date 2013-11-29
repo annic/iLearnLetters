@@ -39,14 +39,15 @@
 #import "WordsLoaderHelper.h"
 
 @interface WordsViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *randomWord;
+
 @property ( nonatomic) int countOfCustomWords;
 @property (nonatomic, strong) NSMutableArray *arrayOfWords;
 @property  NSMutableArray *wordButtons;
 @property NSMutableArray *phonicsView;
 @property NSDictionary *phonemesToGraphemes;
 
-@property int wordIndex;
+@property NSString* currentWord;
+@property int wordArrayIndex;
 
 @property (nonatomic,strong)Google_TTS_BySham *google_TTS_BySham;
 @end
@@ -59,7 +60,6 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize tempDrawImage, mainImage;
 
-#define yCo 250
 
 -(NSMutableArray *)arrayOfWords{
     if(!_arrayOfWords){
@@ -88,7 +88,7 @@
     
     _phonemesToGraphemes = [WordsLoaderHelper createPhonicsDictionary];
     
-    _wordIndex = 0;
+    _wordArrayIndex = 0;
     
     // Load the words from the dictionary of selected level
     [WordsLoaderHelper extractWordsFromFile:self.levelSelected
@@ -115,36 +115,40 @@
     
 }
 
--(NSString *)randomlyPickWord{
-    
-    int r = self.wordIndex++ % [self.arrayOfWords count];
-    NSString* word = [self.arrayOfWords objectAtIndex:r];
+- (IBAction)randomlyPickWord:(id)sender
+{
+    int r = self.wordArrayIndex++ % [self.arrayOfWords count];
+    self.currentWord = [self.arrayOfWords objectAtIndex:r];
     
     for (UIButton *button in _wordButtons) {
         [button removeFromSuperview];
     }
     [_wordButtons removeAllObjects];
     
-    for (int i = 0; i < [[self.arrayOfWords objectAtIndex:r] length]; i++) {
-        [self createButtonFront:i :[NSString stringWithFormat:@"%@", [word substringWithRange:NSMakeRange(i, 1)]]];
-        
+    for (int i = 0; i < [self.currentWord length]; i++)
+    {
+        [self createButtonFront:i :[self.currentWord substringWithRange:NSMakeRange(i, 1)]];
     }
     
-    return [self.arrayOfWords objectAtIndex:r];
+    // Read the word
+    [self.google_TTS_BySham speak:self.currentWord];
 }
 
 - (IBAction)readTheWord:(id)sender
 {
-        
-    self.randomWord.text = [NSString stringWithFormat:@"%@", [self randomlyPickWord]];
-    
-    [self.google_TTS_BySham speak:[NSString stringWithFormat:@"%@", self.randomWord.text]];
-    
+    [self.google_TTS_BySham speak:self.currentWord];
 }
 
--(void)createButtonFront:(int)whichLetter :(NSString *)letter{
+-(void)createButtonFront:(int)whichLetter :(NSString *)letter
+{
     
-    CGPoint pointToAddButton = CGPointMake((whichLetter + 5) * 70, yCo);
+    // Compute the location where the first letter should begin
+    CGFloat width = self.view.frame.size.width;
+    int count = [self.currentWord length];
+    int xoffset = (width - count * 80) / 2;
+    const int yoffset = 250;
+    
+    CGPoint pointToAddButton = CGPointMake(xoffset + whichLetter * 80, yoffset);
     
     UIButton *buttonToAdd = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -152,7 +156,9 @@
     
     [buttonToAdd setTitleColor:[UIColor redColor] forState:(UIControlState)UIControlStateNormal];
     
-    buttonToAdd.frame = CGRectMake(pointToAddButton.x, pointToAddButton.y, 44.0f, 44.0f);
+    buttonToAdd.titleLabel.font = [UIFont systemFontOfSize:40];
+    
+    buttonToAdd.frame = CGRectMake(pointToAddButton.x, pointToAddButton.y, 70.0f, 70.0f);
     
     [buttonToAdd addTarget:self action:@selector(displayPhonics:)
           forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
@@ -195,7 +201,7 @@
     int count = 0;
     for (NSString* currString in [_phonemesToGraphemes objectForKey:[NSString stringWithFormat:@"%@", [sender titleLabel].text]])
     {
-        [self createPhonicsButtonFront:count:[NSString stringWithFormat:@"%@", currString]];
+        [self createPhonicsButtonFront:count:currString];
         count++;
     }
     
@@ -288,6 +294,15 @@
     }
 }
 
+- (IBAction)saveButtonPressed:(id)sender
+{
+    UIGraphicsBeginImageContextWithOptions(self.mainImage.bounds.size, NO, 0.0);
+    [self.mainImage.image drawInRect:CGRectMake(0, 0, self.mainImage.frame.size.width, self.mainImage.frame.size.height)];
+    UIImage *SaveImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImageWriteToSavedPhotosAlbum(SaveImage, self,@selector(image:didFinishSavingWithError:contextInfo:), nil);
+}
+
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     // Was there an error?
@@ -305,18 +320,22 @@
     
     mouseSwiped = NO;
     UITouch *touch = [touches anyObject];
-    lastPoint = [touch locationInView:self.view];
+    lastPoint = [touch locationInView:self.tempDrawImage];
+    NSLog(@"Touch began at: %f, %f", lastPoint.x, lastPoint.y);
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     
     mouseSwiped = YES;
     UITouch *touch = [touches anyObject];
-    CGPoint currentPoint = [touch locationInView:self.view];
+    // CGPoint currentPoint = [touch locationInView:self.view];
+    CGPoint currentPoint = [touch locationInView:self.tempDrawImage];
     
-    UIGraphicsBeginImageContext(self.view.frame.size);
-    [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    UIGraphicsBeginImageContext(self.tempDrawImage.frame.size);
+//    [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.tempDrawImage.frame.size.width, self.tempDrawImage.frame.size.height)];
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
+    
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
     CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
     CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush );

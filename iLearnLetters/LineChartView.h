@@ -24,8 +24,14 @@
 @property (nonatomic) NSMutableArray* data1;
 @property (nonatomic) NSMutableArray* data2;
 
+@property (nonatomic) NSMutableArray* text0;
+@property (nonatomic) NSMutableArray* text1;
+@property (nonatomic) NSMutableArray* text2;
+
 @property (weak) UIColor* color0;
 @property (weak) UIColor* color1;
 @property (weak) UIColor* color2;
+
+@property (weak) UILabel* dataLabel;
 
 @end

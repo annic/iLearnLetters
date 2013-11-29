@@ -55,7 +55,7 @@
     // If so directly send user to the main page
     if ([[PFUser currentUser] isAuthenticated]) {
         [self performSegueWithIdentifier:@"mainPage" sender:self];
-        NSLog(@"User is allready logged in");
+        NSLog(@"User is already logged in");
     
     }
 }

@@ -10,6 +10,7 @@
 //  Date            Author                      Description
 //  ---------------------------------------------------------------------------
 //  2013-11-26      Anni Cao                    Original definition
+//  2013-11-28      Anni Cao                    Added dynamic graph info
 //
 //  Known bugs: N/A
 //
@@ -47,6 +48,33 @@
     return _data2;
 }
 
+- (NSMutableArray*)text0
+{
+    if (!_text0)
+    {
+        _text0 = [NSMutableArray new];
+    }
+    return _text0;
+}
+
+- (NSMutableArray*)text1
+{
+    if (!_text1)
+    {
+        _text1 = [NSMutableArray new];
+    }
+    return _text1;
+}
+
+- (NSMutableArray*)text2
+{
+    if (!_text2)
+    {
+        _text2 = [NSMutableArray new];
+    }
+    return _text2;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -62,8 +90,9 @@
 {
     CGFloat minx = 10.0;
     CGFloat miny = 10.0;
-    CGFloat maxx = 650.0;
-    CGFloat maxy = 410.0;
+    CGFloat maxx = rect.size.width - 10.0; // 650.0;
+    CGFloat maxy = rect.size.height - 10.0; // 410.0;
+
     CGFloat width = maxx - minx;
     CGFloat height = maxy - miny;
     
@@ -96,7 +125,14 @@
     CGContextMoveToPoint(context, minx+5, miny+15);
     CGContextAddLineToPoint(context, minx, miny);
     
-    CGContextStrokePath(context);
+    // Draw rulers on Y axis
+    for (int i = 1; i <= numYIntervals; i++)
+    {
+        float value = (float)i / numYIntervals;
+        CGFloat y = (1.0 - value) * numYIntervals * spacingY + miny + topYOffset;
+        CGContextMoveToPoint(context, minx, y);
+        CGContextAddLineToPoint(context, minx + 10, y);
+    }
     
     // Now draw the actual data!
     NSUInteger count0 = self.data0.count;
@@ -112,6 +148,15 @@
     NSUInteger numXIntervals = maxCount + 1;
     CGFloat spacingX = width / numXIntervals;
     
+    for (int i = 1; i < numXIntervals; i++)
+    {
+        CGFloat x = i * spacingX;
+        CGContextMoveToPoint(context, x, maxy);
+        CGContextAddLineToPoint(context, x, maxy - 10);
+    }
+    
+    CGContextStrokePath(context);
+    
     // Line width for data
     CGContextSetLineWidth(context, 3.0);
     
@@ -124,9 +169,20 @@
         CGFloat value = [[self.data0 objectAtIndex:i] floatValue];
         CGFloat y = (1.0 - value) * numYIntervals * spacingY + miny + topYOffset;
         CGContextAddLineToPoint(context, x, y);
+        
+        UIButton *buttonToAdd = [UIButton buttonWithType:UIButtonTypeCustom];
+        [buttonToAdd setBackgroundColor:self.color0];
+        
+        buttonToAdd.tag = i;
+        buttonToAdd.frame = CGRectMake(x - 7.5, y - 7.5, 15.0f, 15.0f);
+        [buttonToAdd addTarget:self action:@selector(showDataText:)
+              forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
+        
+        [self addSubview:buttonToAdd];
+        
     }
     CGContextStrokePath(context);
-
+    
     // Draw line 1
     CGContextSetStrokeColorWithColor(context, self.color1.CGColor);
     CGContextMoveToPoint(context, minx, maxy);
@@ -136,6 +192,17 @@
         CGFloat value = [[self.data1 objectAtIndex:i] floatValue];
         CGFloat y = (1.0 - value) * numYIntervals * spacingY + miny + topYOffset;
         CGContextAddLineToPoint(context, x, y);
+        
+        UIButton *buttonToAdd = [UIButton buttonWithType:UIButtonTypeCustom];
+        [buttonToAdd setBackgroundColor:self.color1];
+        
+        buttonToAdd.tag = 256 + i;
+        buttonToAdd.frame = CGRectMake(x - 7.5, y - 7.5, 15.0f, 15.0f);
+        [buttonToAdd addTarget:self action:@selector(showDataText:)
+              forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
+        
+        [self addSubview:buttonToAdd];
+
     }
     CGContextStrokePath(context);
 
@@ -148,8 +215,43 @@
         CGFloat value = [[self.data2 objectAtIndex:i] floatValue];
         CGFloat y = (1.0 - value) * numYIntervals * spacingY + miny + topYOffset;
         CGContextAddLineToPoint(context, x, y);
+        
+        UIButton *buttonToAdd = [UIButton buttonWithType:UIButtonTypeCustom];
+        [buttonToAdd setBackgroundColor:self.color2];
+        
+        buttonToAdd.tag = 512 + i;
+        buttonToAdd.frame = CGRectMake(x - 7.5, y - 7.5, 15.0f, 15.0f);
+        [buttonToAdd addTarget:self action:@selector(showDataText:)
+              forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
+        
+        [self addSubview:buttonToAdd];
+
     }
     CGContextStrokePath(context);
+}
+
+- (IBAction)showDataText:(id)sender
+{
+    UIButton* button = sender;
+    int tag = button.tag;
+    int arrayIndex = tag / 256;
+    int textIndex = tag - (256 * arrayIndex);
+    NSString* dataText = nil;
+    switch (arrayIndex)
+    {
+        case 0:
+            dataText = [self.text0 objectAtIndex:textIndex];
+            break;
+        
+        case 1:
+            dataText = [self.text1 objectAtIndex:textIndex];
+            break;
+            
+        default:
+            dataText = [self.text2 objectAtIndex:textIndex];
+            break;
+    }
+    self.dataLabel.text = dataText;
 }
 
 @end

@@ -251,7 +251,7 @@
     
     [buttonToAdd setBackgroundColor:[UIColor cyanColor]];
     
-    [buttonToAdd setTitleColor:[UIColor redColor] forState:(UIControlState)UIControlStateNormal];
+    [buttonToAdd setTitleColor:[UIColor whiteColor] forState:(UIControlState)UIControlStateNormal];
     buttonToAdd.titleLabel.font = [UIFont systemFontOfSize:40];
     
     buttonToAdd.frame = CGRectMake(pointToAddButton.x, pointToAddButton.y, 70.0f, 70.0f);

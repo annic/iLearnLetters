@@ -1,9 +1,20 @@
 //
-//  StatPageViewController.m
-//  iLearnLetters
+//  Purpose: Implementation for class StatPageViewController
 //
-//  Created by Rouzbeh Roshanravan on 2013-11-11.
-//  Copyright (c) 2013 Rouzbeh Roshanravan. All rights reserved.
+//  Application: iLearnLetters
+//
+//  Team: Flying Moose - Group 1
+//
+//  Revision history:
+//
+//  Date            Author                      Description
+//  ---------------------------------------------------------------------------
+//  2013-11-26      Anni Cao                    Original definition
+//  2013-11-28      Anni Cao                    Added dynamic graph info
+//
+//  Known bugs: N/A
+//
+//  Copyright (c) 2013 Anni Cao. All rights reserved.
 //
 
 #import "StatPageViewController.h"
@@ -39,7 +50,9 @@
 {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     _managedObjectContext = [appDelegate managedObjectContext];
-
+    
+    self.graphInfoLabel.text = @"";
+    
     [self loadStats];
     [self drawGraph];
 }
@@ -83,28 +96,38 @@
     if (!self.statsInfo)
         return;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
     for (GameRecord* record in self.statsInfo)
     {
         float score = (float)record.correct / record.total;
         NSNumber* data = [NSNumber numberWithFloat:score];
+        NSString *formattedDateString = [dateFormatter stringFromDate:record.date];
+        NSString* dataText = [NSString stringWithFormat:@"Level: %@\nScore: %d out of %d\nDate: %@", record.level, record.correct, record.total, formattedDateString];        
         
         if ([record.level isEqualToString:@"easy"])
         {
             [self.lineChartView.data0 addObject:data];
+            [self.lineChartView.text0 addObject:dataText];
         }
         else if ([record.level isEqualToString:@"hard"])
         {
             [self.lineChartView.data1 addObject:data];
+            [self.lineChartView.text1 addObject:dataText];
         }
         else
         {
             [self.lineChartView.data2 addObject:data];
+            [self.lineChartView.text2 addObject:dataText];
         }
     }
     
     self.lineChartView.color0 = [UIColor greenColor];
     self.lineChartView.color1 = [UIColor redColor];
     self.lineChartView.color2 = [UIColor yellowColor];
+    
+    self.lineChartView.dataLabel = self.graphInfoLabel;
 }
 
 - (IBAction)emailResults:(id)sender {
@@ -115,7 +138,7 @@
     {
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
         mailer.mailComposeDelegate = self;
-        [mailer setSubject:@"Progress Report"];
+        [mailer setSubject:@"iLearnLetters Progress Report"];
         NSArray *toRecipients = [NSArray arrayWithObjects:@"", nil];
         [mailer setToRecipients:toRecipients];
         
@@ -136,7 +159,6 @@
         [self presentViewController:mailer animated:YES completion:^{
             NSLog(@"mailer displayed");
         }];
-        
         
     }
     else

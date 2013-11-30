@@ -250,6 +250,8 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if ([title isEqualToString:@"Yes"])
     {
+        [self clearHistory:self.user atLevel:@"easy"];
+        [self clearHistory:self.user atLevel:@"hard"];
         [self clearHistory:self.user atLevel:@"custom"];
     }
 }

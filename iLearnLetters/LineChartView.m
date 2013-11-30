@@ -134,6 +134,23 @@
         CGContextAddLineToPoint(context, minx + 10, y);
     }
     
+    CGContextStrokePath(context);
+    
+    // X and Y axis labels
+    UILabel* xLabel = [UILabel new];
+    xLabel.frame = CGRectMake(maxx - 40, maxy - 30, 50, 20);
+    xLabel.text = @"Time";
+    xLabel.textColor = [UIColor whiteColor];
+    xLabel.backgroundColor = [UIColor clearColor];
+    [self addSubview:xLabel];
+    
+    UILabel* yLabel = [UILabel new];
+    yLabel.frame = CGRectMake(minx + 20, miny + 10, 50, 20);
+    yLabel.text = @"Score";
+    yLabel.textColor = [UIColor whiteColor];
+    yLabel.backgroundColor = [UIColor clearColor];
+    [self addSubview:yLabel];
+    
     // Now draw the actual data!
     NSUInteger count0 = self.data0.count;
     NSUInteger count1 = self.data1.count;
@@ -156,21 +173,6 @@
         CGContextAddLineToPoint(context, x, maxy - 10);
     }
     CGContextStrokePath(context);
-    
-    // X and Y axis labels
-    UILabel* xLabel = [UILabel new];
-    xLabel.frame = CGRectMake(maxx - 40, maxy - 30, 50, 20);
-    xLabel.text = @"Time";
-    xLabel.textColor = [UIColor whiteColor];
-    xLabel.backgroundColor = [UIColor clearColor];
-    [self addSubview:xLabel];
-    
-    UILabel* yLabel = [UILabel new];
-    yLabel.frame = CGRectMake(minx + 20, miny + 10, 50, 20);
-    yLabel.text = @"Score";
-    yLabel.textColor = [UIColor whiteColor];
-    yLabel.backgroundColor = [UIColor clearColor];
-    [self addSubview:yLabel];
     
     // Line width for data
     CGContextSetLineWidth(context, 3.0);

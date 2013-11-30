@@ -48,6 +48,7 @@
     
     // Show the navigation bar on signup page
     [self navigationController].navigationBarHidden = NO;
+    self.passwordTextBox.secureTextEntry = YES;
 	
 }
 

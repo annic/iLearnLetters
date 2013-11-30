@@ -24,6 +24,7 @@
 //                                              for all levels
 //  2013-11-28      Anni Cao                    Moved the phonics dictionary creation
 //                                              to the WordLoaderHelper class
+//  2013-11-29      Anni Cao                    Changed phonics to popover table view
 //
 //  Known bugs: N/A
 //
@@ -40,14 +41,16 @@
 
 @interface WordsViewController ()
 
-@property ( nonatomic) int countOfCustomWords;
+@property (nonatomic) int countOfCustomWords;
 @property (nonatomic, strong) NSMutableArray *arrayOfWords;
-@property  NSMutableArray *wordButtons;
+@property NSMutableArray *wordButtons;
 @property NSMutableArray *phonicsView;
 @property NSDictionary *phonemesToGraphemes;
 
 @property NSString* currentWord;
 @property int wordArrayIndex;
+@property (nonatomic, strong) PhonicsViewController *phonicsViewController;
+@property (nonatomic, strong) UIPopoverController *phonicsPopover;
 
 @property (nonatomic,strong)Google_TTS_BySham *google_TTS_BySham;
 @end
@@ -71,12 +74,6 @@
 
 - (void)viewDidLoad
 {
-    red = 0.0/255.0;
-    green = 0.0/255.0;
-    blue = 0.0/255.0;
-    brush = 10.0;
-    opacity = 1.0;
-    
     [super viewDidLoad];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -108,11 +105,6 @@
     [self.arrayOfWords shuffle];
     
     self.google_TTS_BySham = [[Google_TTS_BySham alloc] init];
-}
-
--(void)closeSettings:(id)sender
-{
-    
 }
 
 - (IBAction)randomlyPickWord:(id)sender
@@ -171,96 +163,33 @@
     
 }
 
--(IBAction)displayPhonics:(id)sender{
+-(IBAction)displayPhonics:(id)sender
+{
+    UIButton* letterButton = sender;
     
-    // Create UIViews for phonics screen
-    CGRect viewRect = CGRectMake(10, 10, 1000, 675);
-    UIView* phonics = [[UIView alloc] initWithFrame:viewRect];
-    [phonics setBackgroundColor:[UIColor whiteColor]];
-    [_phonicsView addObject: phonics];
-    [self.view addSubview:phonics];
+    NSArray* phonicsNames = [_phonemesToGraphemes objectForKey:letterButton.titleLabel.text];
     
-    CGPoint pointToAddButton = CGPointMake(15, 15);
-    UIButton *exitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [exitButton setBackgroundColor:[UIColor cyanColor]];
-    [exitButton setTitleColor:[UIColor redColor] forState:(UIControlState)UIControlStateNormal];
-    exitButton.frame = CGRectMake(pointToAddButton.x, pointToAddButton.y, 60.0f, 60.0f);
-    [exitButton addTarget:self action:@selector(exitPhonics:)
-         forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
-    exitButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    exitButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    exitButton.titleLabel.numberOfLines = 0;
-    [exitButton setTitle:@"Back to \nWord" forState:(UIControlState)UIControlStateNormal];
-    [_phonicsView addObject: exitButton];
-    [self.view addSubview:exitButton];
+    //Create the PhonicsViewController.
+    _phonicsViewController = [[PhonicsViewController alloc] initWithStyle:UITableViewStylePlain data:phonicsNames];
     
-    // letter button
-    [self createPhonicsButtonFront:-1 :[NSString stringWithFormat:@"%@", [sender titleLabel].text]];
+    //Set this VC as the delegate.
+    _phonicsViewController.delegate = self;
     
-    // phonics buttons
-    int count = 0;
-    for (NSString* currString in [_phonemesToGraphemes objectForKey:[NSString stringWithFormat:@"%@", [sender titleLabel].text]])
+    // If the phonics popover is already shown, hide it
+    if (_phonicsPopover)
     {
-        [self createPhonicsButtonFront:count:currString];
-        count++;
+        [_phonicsPopover dismissPopoverAnimated:YES];
     }
     
-}
-
--(void)createPhonicsButtonFront:(int)whichButton :(NSString *)text{
+    //Show the phonics popover
+    _phonicsPopover = [[UIPopoverController alloc] initWithContentViewController:_phonicsViewController];
     
-    
-    CGPoint pointToAddButton;
-    if (whichButton < 0){
-        pointToAddButton = CGPointMake(200, 300);
-    } else {
-        int x = ((floor(whichButton/3)) * 200 ) + 400;
-        int y = ((whichButton % 3) * 200 ) + 100;
-        pointToAddButton = CGPointMake(x, y);
-    }
-    
-    UIButton *buttonToAdd = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [buttonToAdd setBackgroundColor:[UIColor cyanColor]];
-    
-    [buttonToAdd setTitleColor:[UIColor redColor] forState:(UIControlState)UIControlStateNormal];
-    
-    buttonToAdd.frame = CGRectMake(pointToAddButton.x, pointToAddButton.y, 100.0f, 100.0f);
-    
-    [buttonToAdd addTarget:self action:@selector(readTheChar:)
-          forControlEvents:(UIControlEvents)UIControlEventTouchUpInside];
-    
-    buttonToAdd.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    buttonToAdd.titleLabel.textAlignment = NSTextAlignmentCenter;
-    buttonToAdd.titleLabel.numberOfLines = 0;
-    
-    [buttonToAdd setTitle:text forState:(UIControlState)UIControlStateNormal];
-    
-    [_phonicsView addObject: buttonToAdd];
-    
-    [self.view addSubview:buttonToAdd];
-    
-}
-
--(IBAction)exitPhonics:(id)sender{
-
-    for (UIButton *button in _phonicsView) {
-        [button removeFromSuperview];
-    }
-    for (UIView *view in _phonicsView) {
-        [view removeFromSuperview];
-    }
-    [_phonicsView removeAllObjects];
-    
-    //reset whiteboard
-    self.tempDrawImage.image = nil;
-    
-}
+    [_phonicsPopover presentPopoverFromRect:letterButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+ }
 
 -(IBAction)readTheChar:(id)sender{
     
     [self.google_TTS_BySham speak:[NSString stringWithFormat:@"%@", [sender titleLabel].text]];
-    
 }
 
 - (void)viewDidUnload
@@ -316,38 +245,45 @@
     }
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    mouseSwiped = NO;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch *touch = [touches anyObject];
     lastPoint = [touch locationInView:self.tempDrawImage];
     NSLog(@"Touch began at: %f, %f", lastPoint.x, lastPoint.y);
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    mouseSwiped = YES;
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGFloat brush = 10.0;
+    CGFloat opacity = 1.0;
+
     UITouch *touch = [touches anyObject];
-    // CGPoint currentPoint = [touch locationInView:self.view];
     CGPoint currentPoint = [touch locationInView:self.tempDrawImage];
     
     UIGraphicsBeginImageContext(self.tempDrawImage.frame.size);
-//    [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+
     [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.tempDrawImage.frame.size.width, self.tempDrawImage.frame.size.height)];
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
     
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
     CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
     CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush );
-    CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, 1.0);
+    CGContextSetStrokeColorWithColor(UIGraphicsGetCurrentContext(), [UIColor blackColor].CGColor);
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
     
     CGContextStrokePath(UIGraphicsGetCurrentContext());
     self.tempDrawImage.image = UIGraphicsGetImageFromCurrentImageContext();
     [self.tempDrawImage setAlpha:opacity];
+    
     UIGraphicsEndImageContext();
     
     lastPoint = currentPoint;
+}
+
+-(void)selectedPhonics:(NSString *)phonicsName
+{
+    // Read the word
+    [self.google_TTS_BySham speak:phonicsName];
 }
 
 @end

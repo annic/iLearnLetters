@@ -21,18 +21,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SettingsViewController.h"
+// #import "SettingsViewController.h"
+#import "PhonicsViewController.h"
 
-@interface WordsViewController : UIViewController<SettingsViewControllerDelegate, UIActionSheetDelegate> {
-    
+@interface WordsViewController : UIViewController<PhonicsDelegate, UIActionSheetDelegate>
+{    
     CGPoint lastPoint;
-    CGFloat red;
-    CGFloat green;
-    CGFloat blue;
-    CGFloat brush;
-    CGFloat opacity;
-    BOOL mouseSwiped;
-    
 }
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

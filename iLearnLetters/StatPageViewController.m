@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *wallScroll;
 @property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
 @property NSMutableArray* statsInfo;
+@property NSString* user;
 
 @end
 
@@ -69,7 +70,8 @@
     PFUser* user = [PFUser currentUser];
     if (user)
     {
-        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"user == %@", user.username];
+        self.user = user.username;
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"user == %@", self.user];
         [request setPredicate:predicate];
     }
     
@@ -166,7 +168,7 @@
             {
                 sum+= [[self.lineChartView.data0 objectAtIndex:i] floatValue];
             }
-            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d easy level games with an average score of: %.1f%%\n", count, sum*100/count]];
+            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d easy level games with an average score of: %.1f%% (green line).\n", count, sum*100/count]];
         }
         
         sum = 0;
@@ -177,7 +179,7 @@
             {
                 sum+= [[self.lineChartView.data1 objectAtIndex:i] floatValue];
             }
-            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d hard level games with an average score of: %.1f%%\n", count, sum*100/count]];
+            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d hard level games with an average score of: %.1f%% (red line).\n", count, sum*100/count]];
         }
         
         sum = 0;
@@ -188,7 +190,7 @@
             {
                 sum+= [[self.lineChartView.data2 objectAtIndex:i] floatValue];
             }
-            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d hard level games with an average score of: %.1f%%\n", count, sum*100/count]];
+            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d hard level games with an average score of: %.1f%% (yellow line).\n", count, sum*100/count]];
         }
         
         [mailer setMessageBody:emailBody isHTML:NO];
@@ -232,6 +234,58 @@
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"Mailer Dismissed");
     }];
+}
+
+- (IBAction)clearHistoryPressed:(id)sender {
+    
+    UIAlertView *clearAlert = [[UIAlertView alloc] initWithTitle:@"Clear History Records" message:@"Are you sure you want to clear all history records?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    
+    [clearAlert show];
+    
+}
+
+//This is the delegate method for UIAlertView
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if ([title isEqualToString:@"Yes"])
+    {
+        [self clearHistory:self.user atLevel:@"custom"];
+    }
+}
+
+- (void)clearHistory:(NSString*)user atLevel:(NSString*)level
+{
+    // Create a fetch request to retrieve stats from core data
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity =
+    [NSEntityDescription entityForName:@"GameRecord"
+                inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:entity];
+    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"(user == %@) AND (level == %@)", user, level];
+    [request setPredicate:predicate];
+    
+    // Run the fetch request
+    NSError* error;
+    NSArray* records = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (records)
+    {
+        for (GameRecord* record in records)
+        {
+            [self.managedObjectContext deleteObject:record];
+        }
+    }
+    else
+    {
+        NSLog(@"Failed to load stats from core data");
+    }
+    
+    //Save context to remove the records
+    if(![self.managedObjectContext save:&error]){
+        //Handle Error
+        NSLog(@"Problem saving stats info to core data");
+    }
 }
 
 @end

@@ -11,6 +11,7 @@
 		3D664EA11845B20400F03A44 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D664EA01845B20400F03A44 /* LineChartView.m */; };
 		3DBE0B85183C8CD400841FB8 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE0B84183C8CD400841FB8 /* GameViewController.m */; };
 		3DBE0B88183F2EDB00841FB8 /* WordsLoaderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE0B87183F2EDB00841FB8 /* WordsLoaderHelper.m */; };
+		3DCFAB6C184983530089ABD0 /* PhonicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFAB6B184983530089ABD0 /* PhonicsViewController.m */; };
 		D50137E417F0D04400CC4C98 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E317F0D04400CC4C98 /* UIKit.framework */; };
 		D50137E617F0D04400CC4C98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E517F0D04400CC4C98 /* Foundation.framework */; };
 		D50137E817F0D04400CC4C98 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50137E717F0D04400CC4C98 /* CoreGraphics.framework */; };
@@ -66,8 +67,6 @@
 		D5B00706183157A100E13E56 /* pieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B00705183157A100E13E56 /* pieChartView.m */; };
 		D5B00707183157A100E13E56 /* pieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B00705183157A100E13E56 /* pieChartView.m */; };
 		D5B0070A18315A9100E13E56 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B0070918315A9100E13E56 /* MessageUI.framework */; };
-		D5B0070D18315EA200E13E56 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B0070B18315EA200E13E56 /* SettingsViewController.m */; };
-		D5B0070E18315EA200E13E56 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B0070B18315EA200E13E56 /* SettingsViewController.m */; };
 		D5F2009D181DB609004B013D /* statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F2009C181DB609004B013D /* statistics.png */; };
 		D5F2009F181DB747004B013D /* editWordListButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F2009E181DB747004B013D /* editWordListButton.png */; };
 		E3A74DD91841BB8500A69076 /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A74DD81841BB8500A69076 /* ScrollViewController.m */; };
@@ -92,6 +91,8 @@
 		3DBE0B84183C8CD400841FB8 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		3DBE0B86183F2EDB00841FB8 /* WordsLoaderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsLoaderHelper.h; sourceTree = "<group>"; };
 		3DBE0B87183F2EDB00841FB8 /* WordsLoaderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsLoaderHelper.m; sourceTree = "<group>"; };
+		3DCFAB6A184983530089ABD0 /* PhonicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhonicsViewController.h; sourceTree = "<group>"; };
+		3DCFAB6B184983530089ABD0 /* PhonicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhonicsViewController.m; sourceTree = "<group>"; };
 		D50137E017F0D04400CC4C98 /* iLearnLetters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLearnLetters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D50137E317F0D04400CC4C98 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D50137E517F0D04400CC4C98 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -166,8 +167,6 @@
 		D5B00704183157A100E13E56 /* pieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pieChartView.h; sourceTree = "<group>"; };
 		D5B00705183157A100E13E56 /* pieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pieChartView.m; sourceTree = "<group>"; };
 		D5B0070918315A9100E13E56 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		D5B0070B18315EA200E13E56 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		D5B0070C18315EA200E13E56 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		D5F2009C181DB609004B013D /* statistics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statistics.png; sourceTree = "<group>"; };
 		D5F2009E181DB747004B013D /* editWordListButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editWordListButton.png; sourceTree = "<group>"; };
 		E3A74DD71841BB8500A69076 /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
@@ -333,8 +332,8 @@
 		D501382917F109DF00CC4C98 /* LearnPage */ = {
 			isa = PBXGroup;
 			children = (
-				D5B0070B18315EA200E13E56 /* SettingsViewController.m */,
-				D5B0070C18315EA200E13E56 /* SettingsViewController.h */,
+				3DCFAB6A184983530089ABD0 /* PhonicsViewController.h */,
+				3DCFAB6B184983530089ABD0 /* PhonicsViewController.m */,
 				D501382A17F10A0500CC4C98 /* WordsViewController.h */,
 				D501382B17F10A0500CC4C98 /* WordsViewController.m */,
 			);
@@ -585,7 +584,7 @@
 				D5B006FF18301F0100E13E56 /* levelSelectViewController.m in Sources */,
 				D5B00703183156B200E13E56 /* StatPageViewController.m in Sources */,
 				D5B00706183157A100E13E56 /* pieChartView.m in Sources */,
-				D5B0070D18315EA200E13E56 /* SettingsViewController.m in Sources */,
+				3DCFAB6C184983530089ABD0 /* PhonicsViewController.m in Sources */,
 				E3A74DD91841BB8500A69076 /* ScrollViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,7 +595,6 @@
 			files = (
 				D51221C5181CA00B00B23366 /* iLearnLettersUnitTests.m in Sources */,
 				D5B00707183157A100E13E56 /* pieChartView.m in Sources */,
-				D5B0070E18315EA200E13E56 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

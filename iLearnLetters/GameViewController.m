@@ -92,6 +92,11 @@
         [alert show];
     }
     
+    if (self.totalNumQuestions > self.arrayOfWords.count)
+    {
+        self.totalNumQuestions = self.arrayOfWords.count;
+    }
+    
     // Shuffle the words
     [self.arrayOfWords shuffle];
     
@@ -251,7 +256,7 @@
     
     [buttonToAdd setBackgroundColor:[UIColor cyanColor]];
     
-    [buttonToAdd setTitleColor:[UIColor whiteColor] forState:(UIControlState)UIControlStateNormal];
+    [buttonToAdd setTitleColor:[UIColor redColor] forState:(UIControlState)UIControlStateNormal];
     buttonToAdd.titleLabel.font = [UIFont systemFontOfSize:40];
     
     buttonToAdd.frame = CGRectMake(pointToAddButton.x, pointToAddButton.y, 70.0f, 70.0f);

@@ -1,12 +1,9 @@
-agree
 average
-balloon
 believe
 check
 clean
 decrease
 dinner
-eight
 evening
 first
 flower
@@ -14,7 +11,6 @@ garden
 grape
 happy
 height
-invite
 insert
 jelly
 judge

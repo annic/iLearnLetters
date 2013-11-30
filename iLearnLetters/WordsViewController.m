@@ -96,6 +96,9 @@
     
     if (self.arrayOfWords.count == 0)
     {
+        [self.wordButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.repeatButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        
         self.wordButton.enabled = NO;
         self.repeatButton.enabled = NO;
         NSString* message = [NSString stringWithFormat:@"Please add words to the dictionary of level '%@' first!", self.levelSelected];

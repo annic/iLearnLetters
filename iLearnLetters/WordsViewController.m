@@ -51,8 +51,11 @@
 @property int wordArrayIndex;
 @property (nonatomic, strong) PhonicsViewController *phonicsViewController;
 @property (nonatomic, strong) UIPopoverController *phonicsPopover;
+@property (weak, nonatomic) IBOutlet UIButton *wordButton;
+@property (weak, nonatomic) IBOutlet UIButton *repeatButton;
 
 @property (nonatomic,strong)Google_TTS_BySham *google_TTS_BySham;
+
 @end
 
 @implementation WordsViewController
@@ -93,6 +96,8 @@
     
     if (self.arrayOfWords.count == 0)
     {
+        self.wordButton.enabled = NO;
+        self.repeatButton.enabled = NO;
         NSString* message = [NSString stringWithFormat:@"Please add words to the dictionary of level '%@' first!", self.levelSelected];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:message

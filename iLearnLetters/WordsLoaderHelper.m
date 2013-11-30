@@ -40,7 +40,14 @@
         //Seperate each word at white space and add it to an array
         NSArray *wordArray = [[[fetchResultsList lastObject] wordString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         
-        [arrayOfWords addObjectsFromArray:wordArray];
+        NSCharacterSet *charc=[NSCharacterSet characterSetWithCharactersInString:@" "];
+        for (NSString* word in wordArray)
+        {
+            if ([word stringByTrimmingCharactersInSet:charc].length > 0)
+            {
+                [arrayOfWords addObject:word];
+            }
+        }
     }
     else
     {

@@ -809,7 +809,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="mainImage" destination="tL1-PW-5gS" id="Ywi-0U-L2v"/>
+                        <outlet property="repeatButton" destination="an4-OC-E7N" id="mJo-C8-HUv"/>
                         <outlet property="tempDrawImage" destination="mhF-CA-vSs" id="MhB-ln-LWd"/>
+                        <outlet property="wordButton" destination="t4H-6q-iFo" id="H5U-8i-ucx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1x-UD-FD0" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -133,7 +133,6 @@
 
 -(void)createButtonFront:(int)whichLetter :(NSString *)letter
 {
-    
     // Compute the location where the first letter should begin
     CGFloat width = self.view.frame.size.width;
     int count = [self.currentWord length];
@@ -166,6 +165,7 @@
 -(IBAction)displayPhonics:(id)sender
 {
     UIButton* letterButton = sender;
+    [self selectedPhonics:letterButton.titleLabel.text];
     
     NSArray* phonicsNames = [_phonemesToGraphemes objectForKey:letterButton.titleLabel.text];
     
@@ -186,11 +186,6 @@
     
     [_phonicsPopover presentPopoverFromRect:letterButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
  }
-
--(IBAction)readTheChar:(id)sender{
-    
-    [self.google_TTS_BySham speak:[NSString stringWithFormat:@"%@", [sender titleLabel].text]];
-}
 
 - (void)viewDidUnload
 {

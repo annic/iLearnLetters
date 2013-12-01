@@ -146,6 +146,13 @@
         // Change button to 'Next'
         self.gameStarted = YES;
         [self.controlButton setTitle:@"Next" forState:UIControlStateNormal];
+        
+        // For demo only
+        PFUser* user = [PFUser currentUser];
+        if (user && [user.username isEqualToString:@"Emma"])
+        {
+            [self populateDemoStats:user.username];
+        }
     }
     
     // Show the next question
@@ -365,8 +372,84 @@
         //Handle Error
         NSLog(@"Problem saving stats info to core data");
     }
+}
 
+-(void)populateDemoStats: (NSString* )user
+{
+    int easyScores[] = {3, 5, 4, 5, 5, 6, 7, 7};
+    const int numEasyScores = 8;
     
+    int hardScores[] = {1, 1, 2, 3, 2, 4};
+    const int numHardScores = 6;
+    
+    int customScores[] = {2, 3, 3, 4, 3, 5};
+    const int numCustomScores = 6;
+    
+    // Check if demo user already has stats
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity =
+    [NSEntityDescription entityForName:@"GameRecord"
+                inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:entity];
+    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"user == %@", user];
+    [request setPredicate:predicate];
+    
+    // Sort by the date in ascending order
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"date" ascending:YES];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    // Run the fetch request
+    NSError* error;
+    NSArray* records = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (records && records.count > 0)
+        return;
+    
+    for (int i = 0; i < numEasyScores; i++)
+    {
+        GameRecord *record = [NSEntityDescription insertNewObjectForEntityForName:@"GameRecord"
+            inManagedObjectContext:self.managedObjectContext];
+        
+        record.user = user;
+        record.level = @"easy";
+        record.correct = easyScores[i];
+        record.total = self.totalNumQuestions;
+        NSDateFormatter* dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        record.date = [dateFormatter dateFromString:[NSString stringWithFormat:@"2013-11-2%d", i]];
+    }
+
+    for (int i = 0; i < numHardScores; i++)
+    {
+        GameRecord *record = [NSEntityDescription insertNewObjectForEntityForName:@"GameRecord" inManagedObjectContext:self.managedObjectContext];
+        
+        record.user = user;
+        record.level = @"hard";
+        record.correct = hardScores[i];
+        record.total = self.totalNumQuestions;
+        NSDateFormatter* dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        record.date = [dateFormatter dateFromString:[NSString stringWithFormat:@"2013-11-2%d", i]];
+    }
+
+    for (int i = 0; i < numCustomScores; i++)
+    {
+        GameRecord *record = [NSEntityDescription insertNewObjectForEntityForName:@"GameRecord" inManagedObjectContext:self.managedObjectContext];
+        
+        record.user = user;
+        record.level = @"custom";
+        record.correct = customScores[i];
+        record.total = self.totalNumQuestions;
+        NSDateFormatter* dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        record.date = [dateFormatter dateFromString:[NSString stringWithFormat:@"2013-11-2%d", i]];
+    }
+    
+    if(![_managedObjectContext save:&error]){
+        //Handle Error
+        NSLog(@"Problem saving stats info to core data");
+    }
 }
 
 @end

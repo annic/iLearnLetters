@@ -30,7 +30,13 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *wallScroll;
 @property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
 @property NSMutableArray* statsInfo;
+@property (weak, nonatomic) IBOutlet UILabel *easyLineLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hardLineLabel;
+@property (weak, nonatomic) IBOutlet UILabel *customLineLabel;
 @property NSString* user;
+@property float avgScoreEasy;
+@property float avgScoreHard;
+@property float avgScoreCustom;
 
 @end
 
@@ -101,6 +107,10 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
+    float sum0 = 0;
+    float sum1 = 0;
+    float sum2 = 0;
+    
     for (GameRecord* record in self.statsInfo)
     {
         float score = (float)record.correct / record.total;
@@ -112,17 +122,37 @@
         {
             [self.lineChartView.data0 addObject:data];
             [self.lineChartView.text0 addObject:dataText];
+            sum0+= (float)record.correct / record.total;
         }
         else if ([record.level isEqualToString:@"hard"])
         {
             [self.lineChartView.data1 addObject:data];
             [self.lineChartView.text1 addObject:dataText];
+            sum1+= (float)record.correct / record.total;
         }
         else
         {
             [self.lineChartView.data2 addObject:data];
             [self.lineChartView.text2 addObject:dataText];
+            sum2+= (float)record.correct / record.total;
         }
+    }
+    
+    if (self.lineChartView.data0.count > 0)
+    {
+        self.avgScoreEasy = sum0 / self.lineChartView.data0.count;
+        self.easyLineLabel.text = [NSString stringWithFormat:@"Easy (AVG: %.1f%%)", self.avgScoreEasy*100];
+    }
+    if (self.lineChartView.data1.count > 0)
+    {
+        self.avgScoreHard = sum1 / self.lineChartView.data1.count;
+        self.hardLineLabel.text = [NSString stringWithFormat:@"Hard (AVG: %.1f%%)", self.avgScoreHard*100];
+    }
+    if (self.lineChartView.data2.count > 0)
+    {
+        self.avgScoreCustom = sum2 / self.lineChartView.data2.count;
+        self.customLineLabel.text = [NSString stringWithFormat:@"Custom (AVG: %.1f%%)", self.avgScoreCustom*100];
+
     }
     
     self.lineChartView.color0 = [UIColor greenColor];
@@ -160,37 +190,19 @@
         NSMutableString* emailBody = [NSMutableString new];
         [emailBody appendString:emailHeader];
         
-        float sum = 0;
-        int count = self.lineChartView.data0.count;
-        if (count > 0)
+        if (self.avgScoreEasy > 0)
         {
-            for (int i = 0; i < count; i++)
-            {
-                sum+= [[self.lineChartView.data0 objectAtIndex:i] floatValue];
-            }
-            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d easy level games with an average score of: %.1f%% (green line).\n", count, sum*100/count]];
+            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d easy level games with an average score of: %.1f%% (green line).\n", self.lineChartView.data0.count, self.avgScoreEasy*100]];
         }
         
-        sum = 0;
-        count = self.lineChartView.data1.count;
-        if (count > 0)
+        if (self.avgScoreHard > 0)
         {
-            for (int i = 0; i < count; i++)
-            {
-                sum+= [[self.lineChartView.data1 objectAtIndex:i] floatValue];
-            }
-            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d hard level games with an average score of: %.1f%% (red line).\n", count, sum*100/count]];
+            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d hard level games with an average score of: %.1f%% (red line).\n", self.lineChartView.data1.count, self.avgScoreHard*100]];
         }
         
-        sum = 0;
-        count = self.lineChartView.data2.count;
-        if (count > 0)
+        if (self.avgScoreCustom > 0)
         {
-            for (int i = 0; i < count; i++)
-            {
-                sum+= [[self.lineChartView.data2 objectAtIndex:i] floatValue];
-            }
-            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d hard level games with an average score of: %.1f%% (yellow line).\n", count, sum*100/count]];
+            [emailBody appendString:[NSString stringWithFormat:@"He/she has taken %d hard level games with an average score of: %.1f%% (yellow line).\n", self.lineChartView.data2.count, self.avgScoreCustom*100]];
         }
         
         [mailer setMessageBody:emailBody isHTML:NO];

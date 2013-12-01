@@ -1,4 +1,4 @@
-//
+    //
 //  Purpose: Implementation for class GameViewController
 //
 //  Application: iLearnLetters
@@ -193,7 +193,7 @@
     
     self.answered = NO;
     
-    self.questionLabel.text = @"What's the         letter of the word you hear?";
+    self.questionLabel.text = @"What is the         letter of the word you hear?";
     
     self.firstLastLabel.text = firstLast;
     
@@ -218,7 +218,7 @@
     
     if (self.currentNumQuesion == self.totalNumQuestions)
     {
-        [self.controlButton setTitle:@"Result" forState:UIControlStateNormal];
+        [self.controlButton setTitle:@"Results" forState:UIControlStateNormal];
     }
     
     // Play the sound of the current word
@@ -299,7 +299,7 @@
 
 - (void)showResult
 {
-    NSString* message = [NSString stringWithFormat:@"You anwsered %d quesions correctly out of %d.", self.correctAnswers, self.totalNumQuestions];
+    NSString* message = [NSString stringWithFormat:@"You answered %d quesions correctly out of %d.", self.correctAnswers, self.totalNumQuestions];
     UIAlertView *resultView = [[UIAlertView alloc] initWithTitle:@"Result"
                                                         message:message
                                                        delegate:self
@@ -323,8 +323,8 @@
     }
     else
     {
-        output = [NSString stringWithFormat:@"Sorry, it's not correct. The word is:"];
-        self.wordLabel.text = self.currentWord;
+        output = [NSString stringWithFormat:@"Sorry, that's not correct. The word is:"];
+        self.wordLabel.text = [NSString stringWithFormat:@" %@", self.currentWord];
     }
     
     // Highlight the correct answer (button) with different color

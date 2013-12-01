@@ -79,7 +79,7 @@
 
 - (IBAction)logoutPressed:(id)sender {
 
-    UIAlertView *logoutAlert = [[UIAlertView alloc] initWithTitle:@"Log Out?" message:@"Are you sure you want to out of iLearnLetters?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    UIAlertView *logoutAlert = [[UIAlertView alloc] initWithTitle:@"Log Out?" message:@"Are you sure you want to log out of iLearnLetters?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     
     [logoutAlert show];
     

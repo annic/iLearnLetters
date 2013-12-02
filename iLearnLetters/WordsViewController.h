@@ -21,7 +21,6 @@
 //
 
 #import <UIKit/UIKit.h>
-// #import "SettingsViewController.h"
 #import "PhonicsViewController.h"
 
 @interface WordsViewController : UIViewController<PhonicsDelegate, UIActionSheetDelegate>
@@ -39,6 +38,5 @@
 
 
 - (IBAction)reset:(id)sender;
-// - (IBAction)pencilPressed:(id)sender;
 
 @end

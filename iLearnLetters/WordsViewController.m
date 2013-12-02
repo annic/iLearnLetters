@@ -66,7 +66,6 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize tempDrawImage, mainImage;
 
-
 -(NSMutableArray *)arrayOfWords{
     if(!_arrayOfWords){
         _arrayOfWords = [[NSMutableArray alloc] init];
@@ -96,11 +95,14 @@
     
     if (self.arrayOfWords.count == 0)
     {
+        // If the dictionary is empty, disable the control buttons
         [self.wordButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self.repeatButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         
         self.wordButton.enabled = NO;
         self.repeatButton.enabled = NO;
+        
+        // Also show error message
         NSString* message = [NSString stringWithFormat:@"Please add words to the dictionary of level '%@' first!", self.levelSelected];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:message
@@ -112,19 +114,23 @@
     // Shuffle the words
     [self.arrayOfWords shuffle];
     
+    // Create Google TTS object
     self.google_TTS_BySham = [[Google_TTS_BySham alloc] init];
 }
 
 - (IBAction)randomlyPickWord:(id)sender
 {
+    // Just take the next word in the word array
     int r = self.wordArrayIndex++ % [self.arrayOfWords count];
     self.currentWord = [self.arrayOfWords objectAtIndex:r];
     
+    // Clear the array of buttons (individual letters)
     for (UIButton *button in _wordButtons) {
         [button removeFromSuperview];
     }
     [_wordButtons removeAllObjects];
     
+    // Take each letter of the word and create a UIButton for it
     for (int i = 0; i < [self.currentWord length]; i++)
     {
         [self createButtonFront:i :[self.currentWord substringWithRange:NSMakeRange(i, 1)]];
@@ -170,6 +176,7 @@
     
 }
 
+// Handle click event for each letter button 
 -(IBAction)displayPhonics:(id)sender
 {
     UIButton* letterButton = sender;

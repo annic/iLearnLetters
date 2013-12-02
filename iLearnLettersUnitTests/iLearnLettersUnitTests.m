@@ -68,29 +68,31 @@
 
 - (void)testGameRecords
 {
+    // First clear the current game records
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext* managedObjectContext = [appDelegate managedObjectContext];
     
-    [GameRecordHelper clearGameRecordsForUser:@"user" atLevel:@"easy" context:managedObjectContext];
+    [GameRecordHelper clearGameRecordsForUser:@"__unit_tester__" atLevel:@"easy" context:managedObjectContext];
     
-    [GameRecordHelper clearGameRecordsForUser:@"user" atLevel:@"hard" context:managedObjectContext];
+    [GameRecordHelper clearGameRecordsForUser:@"__unit_tester__" atLevel:@"hard" context:managedObjectContext];
     
-    // First create a few game records
+    // Then create a few new game records
     for (int i = 0; i < 3; i++)
     {
-        [GameRecordHelper saveGameRecordForUser:@"user" level:@"easy" correct:8 total:10 date:[NSDate date] context:managedObjectContext];
+        [GameRecordHelper saveGameRecordForUser:@"__unit_tester__" level:@"easy" correct:8 total:10 date:[NSDate date] context:managedObjectContext];
     }
     
     for (int i = 0; i < 5; i++)
     {
-        [GameRecordHelper saveGameRecordForUser:@"user" level:@"hard" correct:5 total:10 date:[NSDate date] context:managedObjectContext];
+        [GameRecordHelper saveGameRecordForUser:@"__unit_tester__" level:@"hard" correct:5 total:10 date:[NSDate date] context:managedObjectContext];
     }    
     
-    NSArray* records = [GameRecordHelper loadGameRecordsForUser:@"user" atLevel:@"easy" context:managedObjectContext];
+    // Load the game records and verify the counts match the expected results
+    NSArray* records = [GameRecordHelper loadGameRecordsForUser:@"__unit_tester__" atLevel:@"easy" context:managedObjectContext];
     
     STAssertTrue(records.count == 3, @"Should have 3 records for easy level");
 
-    records = [GameRecordHelper loadGameRecordsForUser:@"user" atLevel:@"hard" context:managedObjectContext];
+    records = [GameRecordHelper loadGameRecordsForUser:@"__unit_tester__" atLevel:@"hard" context:managedObjectContext];
     
     STAssertTrue(records.count == 5, @"Should have 5 records for hard level");
 }

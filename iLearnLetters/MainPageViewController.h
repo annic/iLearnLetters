@@ -14,6 +14,7 @@
 //  2013-10-12      R. Roshanravan              Original definition
 //  2013-10-19      R. Roshanravan              Major UI improvements
 //  2013-10-27      Anni Cao                    Added file headers and comments
+//  2013-11-19      Anni Cao                    Added segue for game page
 //
 //  Known bugs: N/A
 //

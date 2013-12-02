@@ -43,6 +43,7 @@
 
 - (void)performSegue
 {
+    // Navigate to the proper page based on the current mode
     if ([self.mode isEqualToString:@"learn"])
     {
         [self performSegueWithIdentifier:@"learnPage" sender:self];
@@ -73,6 +74,7 @@
 {
     if ([self.mode isEqualToString:@"learn"])
     {
+        // Pass the selected level to the dest view controller
         WordsViewController *destViewController = segue.destinationViewController;
         destViewController.levelSelected = self.levelSelected;
     }

@@ -56,7 +56,6 @@
     if ([[PFUser currentUser] isAuthenticated]) {
         [self performSegueWithIdentifier:@"mainPage" sender:self];
         NSLog(@"User is already logged in");
-    
     }
 }
 
@@ -77,11 +76,15 @@
 -(void)logInUser{
 
     [PFUser logInWithUsernameInBackground:self.userNameTextBox.text password:self.passwordTextBox.text block:^(PFUser *user, NSError *error) {
-        if(user){
+        if(user)
+        {
             //If password matches user will be directed to the main page
             //Go to the main page
             [self performSegueWithIdentifier:@"mainPage" sender:self];
-        }else{
+        }
+        else
+        {
+            // If the login failed, show error message in alert box
             NSString *errorString =[[error userInfo] objectForKey:@"error"];
             
             if([errorString rangeOfString:@"Internet"].location != NSNotFound){
@@ -100,7 +103,6 @@
     //If user clicks on signup button
     //Transfer to signup page
     [self performSegueWithIdentifier:@"signup" sender:self];
-
 }
 
 // Checks if we have an internet connection or not
@@ -130,7 +132,9 @@
     
     if (internetReachable.isReachable == 1) {
         [self logInUser];
-    }else{
+    }
+    else
+    {
         UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Internet Connection Failed" message:@"Please Check Your Internet Connection And Try Again" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         
         [errorAlertView show];
@@ -153,36 +157,23 @@
     // Release any cached data, images, etc. that aren't in use.
 }
 
-
 - (void)viewDidUnload
 {
     [self setScrollView:nil];
     [self setUserNameText:nil];
     [self setPassWordText:nil];
     [super viewDidUnload];
-    
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
-/*
-- (void)dealloc
-{
-    [scrollView release];
-    [userNameText release];
-    [passWordText release];
-    [super dealloc];
-}*/
-
+// Delegate methods for scroll view to adjust the screen
+// for keyboard input
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == userNameText) {
         [userNameText becomeFirstResponder];
     }
-    
     else if (textField == passWordText) {
         [passWordText becomeFirstResponder];
     }
-    
     
     return YES;
 }

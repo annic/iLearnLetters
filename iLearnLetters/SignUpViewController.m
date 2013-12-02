@@ -74,7 +74,6 @@
     user.password = self.passwordTextBox.text;
     user.email = self.emailTextBox.text;
     
-    
     //Now we push this to the background to sign the user up
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
@@ -86,10 +85,11 @@
             
             [self performSegueWithIdentifier:@"mainPage" sender:self];
             
-            
-        } else {
+        }
+        else
+        {
+            // Signup failed and show error message
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            
             
             UIAlertView *errorAlertMsg = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
             
@@ -125,9 +125,12 @@
         });
     };
     
-    if (internetReachableFoo.isReachable == 1) {
+    if (internetReachableFoo.isReachable == 1)
+    {
         [self signNewUserUp];
-    }else{
+    }
+    else
+    {
         UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Internet Connection Failed" message:@"Please Check Your Internet Connection And Try Again" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         
         [errorAlertView show];
@@ -163,15 +166,8 @@
     // e.g. self.myOutlet = nil;
 }
 
-/*
- - (void)dealloc
- {
- [scrollView release];
- [userNameText release];
- [passWordText release];
- [super dealloc];
- }*/
-
+// Delegate methods for scroll view to adjust the screen
+// for keyboard input
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == userNameText) {
         [userNameText becomeFirstResponder];

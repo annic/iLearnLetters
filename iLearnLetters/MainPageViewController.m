@@ -14,6 +14,7 @@
 //  2013-10-12      R. Roshanravan              Original definition
 //  2013-10-19      R. Roshanravan              Major UI improvements
 //  2013-10-27      Anni Cao                    Added file headers and comments
+//  2013-11-19      Anni Cao                    Added segue for game page
 //
 //  Known bugs: N/A
 //
@@ -24,7 +25,6 @@
 #import "MainPageViewController.h"
 #import <Parse/Parse.h>
 #import "UIView+Animation.h"
-// #import "LearnLevelSelect.h"
 #import "levelSelectViewController.h"
 
 @interface MainPageViewController () <UIAlertViewDelegate>
@@ -36,17 +36,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    
+	   
     // Show the navigation bar on the main page
     [self navigationController].navigationBarHidden = NO;
     
     // Hide the back button
     self.navigationItem.hidesBackButton = YES;
     
-    
-    self.usernameLabel.text = [self showUserName];
-    
+    // Show the current user name
+    self.usernameLabel.text = [self showUserName];    
 }
 
 -(NSString *)showUserName{
@@ -70,7 +68,6 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"OK", nil];
-    
     
     alertView.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
     [alertView show];
@@ -117,6 +114,7 @@
         
 	}else{
         
+      // The logout button was pressed
       if (buttonIndex == 1) {
           
           [PFUser logOut];

@@ -128,17 +128,6 @@
 
 - (IBAction)learnPressed:(id)sender
 {
-    
-    //Create a new levelSelect UIView
-//    LearnLevelSelect *levelSelect = [LearnLevelSelect levelSelect];
-//    
-//    //Set its location to the center of the page
-//    levelSelect.center = self.view.center;
-//    
-//    //Add that view to main view 
-//    [self.view addSubviewWithZoomInAnimation:levelSelect duration:1.0];
-//    
-//    [UIView animateWithDuration:1 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{} completion:nil];
     self.mode = @"learn";
 }
 

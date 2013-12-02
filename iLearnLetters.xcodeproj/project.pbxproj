@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3D30B2D31842CF54002CB364 /* GameRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D30B2D21842CF54002CB364 /* GameRecord.m */; };
 		3D664EA11845B20400F03A44 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D664EA01845B20400F03A44 /* LineChartView.m */; };
+		3DB18B5C184BFDC100E23E28 /* GameRecordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB18B5B184BFDC100E23E28 /* GameRecordHelper.m */; };
 		3DBE0B85183C8CD400841FB8 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE0B84183C8CD400841FB8 /* GameViewController.m */; };
 		3DBE0B88183F2EDB00841FB8 /* WordsLoaderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE0B87183F2EDB00841FB8 /* WordsLoaderHelper.m */; };
 		3DCFAB6C184983530089ABD0 /* PhonicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFAB6B184983530089ABD0 /* PhonicsViewController.m */; };
@@ -64,8 +65,6 @@
 		D5632E11181B475600C49012 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = D5632E10181B475600C49012 /* List.m */; };
 		D5B006FF18301F0100E13E56 /* levelSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B006FE18301F0100E13E56 /* levelSelectViewController.m */; };
 		D5B00703183156B200E13E56 /* StatPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B00702183156B200E13E56 /* StatPageViewController.m */; };
-		D5B00706183157A100E13E56 /* pieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B00705183157A100E13E56 /* pieChartView.m */; };
-		D5B00707183157A100E13E56 /* pieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B00705183157A100E13E56 /* pieChartView.m */; };
 		D5B0070A18315A9100E13E56 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B0070918315A9100E13E56 /* MessageUI.framework */; };
 		D5F2009D181DB609004B013D /* statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F2009C181DB609004B013D /* statistics.png */; };
 		D5F2009F181DB747004B013D /* editWordListButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D5F2009E181DB747004B013D /* editWordListButton.png */; };
@@ -87,6 +86,8 @@
 		3D30B2D21842CF54002CB364 /* GameRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRecord.m; sourceTree = "<group>"; };
 		3D664E9F1845B20400F03A44 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
 		3D664EA01845B20400F03A44 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
+		3DB18B5A184BFDC100E23E28 /* GameRecordHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRecordHelper.h; sourceTree = "<group>"; };
+		3DB18B5B184BFDC100E23E28 /* GameRecordHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRecordHelper.m; sourceTree = "<group>"; };
 		3DBE0B83183C8CD400841FB8 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		3DBE0B84183C8CD400841FB8 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		3DBE0B86183F2EDB00841FB8 /* WordsLoaderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsLoaderHelper.h; sourceTree = "<group>"; };
@@ -164,8 +165,6 @@
 		D5B006FE18301F0100E13E56 /* levelSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = levelSelectViewController.m; sourceTree = "<group>"; };
 		D5B00701183156B200E13E56 /* StatPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatPageViewController.h; sourceTree = "<group>"; };
 		D5B00702183156B200E13E56 /* StatPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatPageViewController.m; sourceTree = "<group>"; };
-		D5B00704183157A100E13E56 /* pieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pieChartView.h; sourceTree = "<group>"; };
-		D5B00705183157A100E13E56 /* pieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pieChartView.m; sourceTree = "<group>"; };
 		D5B0070918315A9100E13E56 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D5F2009C181DB609004B013D /* statistics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statistics.png; sourceTree = "<group>"; };
 		D5F2009E181DB747004B013D /* editWordListButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editWordListButton.png; sourceTree = "<group>"; };
@@ -303,6 +302,8 @@
 				D50137FB17F0D04400CC4C98 /* Default-568h@2x.png */,
 				3DBE0B86183F2EDB00841FB8 /* WordsLoaderHelper.h */,
 				3DBE0B87183F2EDB00841FB8 /* WordsLoaderHelper.m */,
+				3DB18B5A184BFDC100E23E28 /* GameRecordHelper.h */,
+				3DB18B5B184BFDC100E23E28 /* GameRecordHelper.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -423,22 +424,12 @@
 		D5B007001831569900E13E56 /* StatPage */ = {
 			isa = PBXGroup;
 			children = (
-				D5B00708183157B000E13E56 /* PieChartView */,
 				D5B00701183156B200E13E56 /* StatPageViewController.h */,
 				D5B00702183156B200E13E56 /* StatPageViewController.m */,
 				3D664E9F1845B20400F03A44 /* LineChartView.h */,
 				3D664EA01845B20400F03A44 /* LineChartView.m */,
 			);
 			name = StatPage;
-			sourceTree = "<group>";
-		};
-		D5B00708183157B000E13E56 /* PieChartView */ = {
-			isa = PBXGroup;
-			children = (
-				D5B00704183157A100E13E56 /* pieChartView.h */,
-				D5B00705183157A100E13E56 /* pieChartView.m */,
-			);
-			name = PieChartView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -570,6 +561,7 @@
 				D501381F17F0D71000CC4C98 /* LoginViewController.m in Sources */,
 				3DBE0B85183C8CD400841FB8 /* GameViewController.m in Sources */,
 				D501382217F0D72400CC4C98 /* SignUpViewController.m in Sources */,
+				3DB18B5C184BFDC100E23E28 /* GameRecordHelper.m in Sources */,
 				D501382517F0D73800CC4C98 /* MainPageViewController.m in Sources */,
 				3DBE0B88183F2EDB00841FB8 /* WordsLoaderHelper.m in Sources */,
 				D501382817F0E75300CC4C98 /* Reachability.m in Sources */,
@@ -583,7 +575,6 @@
 				D5632E11181B475600C49012 /* List.m in Sources */,
 				D5B006FF18301F0100E13E56 /* levelSelectViewController.m in Sources */,
 				D5B00703183156B200E13E56 /* StatPageViewController.m in Sources */,
-				D5B00706183157A100E13E56 /* pieChartView.m in Sources */,
 				3DCFAB6C184983530089ABD0 /* PhonicsViewController.m in Sources */,
 				E3A74DD91841BB8500A69076 /* ScrollViewController.m in Sources */,
 			);
@@ -594,7 +585,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D51221C5181CA00B00B23366 /* iLearnLettersUnitTests.m in Sources */,
-				D5B00707183157A100E13E56 /* pieChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
